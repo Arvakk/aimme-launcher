@@ -3,52 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIMME Launcher v2.0 - Enhanced</title>
+<title>AIMME Launcher v2.0 - Classic</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== PALETA VINHO ===== */
+:root {
+  --vinho: #8B1E3F;
+  --vinho-escuro: #6B162F;
+  --vinho-suave: #E8B4B8;
+  --branco: #FFFFFF;
+  --off-white: #F5F5F7;
+  --preto: #333333;
+  --cinza: #666666;
+  --cinza-claro: #CCCCCC;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   padding: 20px;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  color: #eee;
+  background: var(--off-white);
+  color: var(--preto);
   min-height: 100vh;
   transition: background 0.3s ease;
 }
-body.light-theme {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #1a1a2e;
-}
+
 .container { max-width: 600px; margin: 0 auto; }
 
-/* ===== TÍTULO COM GRADIENTE ===== */
+/* ===== TÍTULOS ===== */
 h1 { 
   text-align: center; 
   margin-bottom: 10px; 
   font-size: 32px;
-  background: linear-gradient(135deg, #fff, #06d6a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-body.light-theme h1 {
-  background: linear-gradient(135deg, #1a1a2e, #06d6a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--vinho);
+  font-weight: 700;
 }
 
-.subtitle { text-align: center; color: #aaa; margin-bottom: 30px; font-size: 14px; }
-body.light-theme .subtitle { color: #666; }
+.subtitle { 
+  text-align: center; 
+  color: var(--cinza); 
+  margin-bottom: 30px; 
+  font-size: 14px; 
+}
 
-/* ===== BOTÃO MODO NOTURNO/CLARO ===== */
+/* ===== BOTÃO MODO NOTURNO (adaptado) ===== */
 .theme-toggle {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
 }
 .theme-btn {
-  background: #0f3460;
-  border: 2px solid #06d6a0;
-  color: #fff;
+  background: var(--branco);
+  border: 2px solid var(--vinho);
+  color: var(--vinho);
   padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
@@ -56,10 +63,11 @@ body.light-theme .subtitle { color: #666; }
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.3s;
 }
-body.light-theme .theme-btn {
-  background: #06d6a0;
-  color: #1a1a2e;
+.theme-btn:hover {
+  background: var(--vinho);
+  color: var(--branco);
 }
 
 /* ===== ABAS DE NAVEGAÇÃO ===== */
@@ -67,16 +75,17 @@ body.light-theme .theme-btn {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
-  background: rgba(0,0,0,0.3);
+  background: var(--branco);
   padding: 10px;
   border-radius: 50px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 .tab {
   flex: 1;
   padding: 12px;
   border: none;
   background: transparent;
-  color: #888;
+  color: var(--cinza);
   font-weight: bold;
   cursor: pointer;
   border-radius: 40px;
@@ -84,8 +93,8 @@ body.light-theme .theme-btn {
   font-size: 14px;
 }
 .tab.active {
-  background: #06d6a0;
-  color: #1a1a2e;
+  background: var(--vinho);
+  color: var(--branco);
 }
 .tab-content {
   display: none;
@@ -94,63 +103,62 @@ body.light-theme .theme-btn {
   display: block;
 }
 
-/* ===== CARDS COM SOMBRA E HOVER ===== */
+/* ===== CARDS ===== */
 .feature-card {
-  background: linear-gradient(145deg, #1e2a47, #16213e);
-  border-radius: 20px;
+  background: var(--branco);
+  border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 10px 30px -15px rgba(6, 214, 160, 0.3);
-  border: 1px solid rgba(6, 214, 160, 0.2);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
+  border: 1px solid var(--cinza-claro);
   transition: all 0.3s ease;
 }
 .feature-card:hover {
-  transform: translateY(-5px);
-  border-color: #06d6a0;
-  box-shadow: 0 15px 40px -10px rgba(6, 214, 160, 0.5);
-}
-body.light-theme .feature-card {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  color: #1a1a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.15);
+  border-color: var(--vinho);
 }
 
 /* ===== BADGES DE VERSÃO ===== */
 .version-badge {
-  background: rgba(255, 215, 0, 0.15);
-  border: 1px solid #FFD700;
+  background: var(--vinho-suave);
+  color: var(--vinho-escuro);
   border-radius: 20px;
   padding: 4px 12px;
   font-size: 11px;
+  font-weight: 600;
   display: inline-block;
-  color: #FFD700;
 }
 
 /* ===== COMANDOS TAGS ===== */
 .cmd-tag {
-  background: #0f3460;
-  color: #06d6a0;
+  background: var(--off-white);
+  color: var(--vinho);
   padding: 4px 10px;
   border-radius: 20px;
   font-family: monospace;
   font-size: 12px;
+  font-weight: 600;
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 5px;
+  border: 1px solid var(--vinho);
 }
 
 /* ===== TIMER POMODORO ===== */
 .timer-container {
-  background: rgba(0,0,0,0.3);
-  border-radius: 15px;
+  background: var(--branco);
+  border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   text-align: center;
-  border: 2px solid #06d6a0;
+  border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .timer-display {
   font-size: 48px;
   font-weight: bold;
-  color: #06d6a0;
+  color: var(--vinho);
   margin: 10px 0;
 }
 .timer-controls {
@@ -159,33 +167,47 @@ body.light-theme .feature-card {
   justify-content: center;
 }
 .timer-btn {
-  background: #0f3460;
-  border: none;
-  color: #fff;
+  background: var(--branco);
+  border: 2px solid var(--vinho);
+  color: var(--vinho);
   padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s;
 }
 .timer-btn:hover {
-  background: #06d6a0;
-  color: #1a1a2e;
+  background: var(--vinho);
+  color: var(--branco);
 }
 
 /* ===== BOTÕES PRINCIPAIS ===== */
 .button-grid { display: grid; gap: 15px; }
 button {
-  padding: 20px; font-size: 16px; font-weight: 600; cursor: pointer;
-  border: 2px solid #0f3460; border-radius: 12px; background: #16213e;
-  color: #fff; transition: all 0.3s ease; text-align: left;
-  display: flex; align-items: center; gap: 12px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--vinho);
+  border-radius: 12px;
+  background: var(--branco);
+  color: var(--preto);
+  transition: all 0.3s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   position: relative;
   overflow: hidden;
 }
 button:hover { 
-  background: #0f3460; 
-  transform: translateY(-2px); 
-  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+  background: var(--vinho);
+  color: var(--branco);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.2);
+}
+button:hover .version {
+  color: var(--branco) !important;
 }
 button:active { transform: translateY(0); }
 button::after {
@@ -194,34 +216,55 @@ button::after {
   bottom: 5px;
   right: 10px;
   font-size: 8px;
-  color: rgba(255,255,255,0.3);
+  color: var(--cinza);
   font-weight: normal;
   letter-spacing: 0.5px;
 }
-.copied { background: #28a745 !important; border-color: #28a745 !important; }
-.copied::after { content: "✅ COPIADO!"; color: rgba(255,255,255,0.8); }
+button:hover::after {
+  color: rgba(255,255,255,0.7);
+}
+.copied { 
+  background: #28a745 !important; 
+  border-color: #28a745 !important; 
+  color: var(--branco) !important;
+}
+.copied::after { 
+  content: "✅ COPIADO!"; 
+  color: var(--branco) !important; 
+}
 .emoji { font-size: 24px; }
 .text { flex: 1; }
 
 .version { 
   font-size: 12px; 
-  color: #FFD700 !important;
+  color: var(--vinho) !important;
   font-weight: bold !important;
   margin-top: 4px;
 }
 
-.footer { text-align: center; margin-top: 40px; color: #666; font-size: 12px; }
+.footer { 
+  text-align: center; 
+  margin-top: 40px; 
+  color: var(--cinza); 
+  font-size: 12px; 
+}
 
 .status {
-  text-align: center; margin-top: 20px; padding: 15px;
-  background: rgba(6, 214, 160, 0.1); border-radius: 8px;
-  border-left: 3px solid #06d6a0; color: #06d6a0; font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--branco);
+  border-radius: 8px;
+  border-left: 4px solid var(--vinho);
+  color: var(--preto);
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 /* ===== INSTRUCTION BANNER ===== */
 .instruction-banner {
-  background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-  border: 2px solid #FFD700;
+  background: var(--branco);
+  border: 2px solid var(--vinho);
   border-radius: 12px;
   padding: 15px;
   margin-bottom: 25px;
@@ -229,11 +272,12 @@ button::after {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .instruction-banner-icon {
   font-size: 32px;
-  background: #FFD700;
-  color: #1a1a2e;
+  background: var(--vinho);
+  color: var(--branco);
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -243,14 +287,17 @@ button::after {
 }
 .instruction-banner-text { flex: 1; }
 .instruction-banner-text h3 {
-  color: #FFD700;
+  color: var(--vinho);
   margin-bottom: 5px;
   font-size: 18px;
 }
-.instruction-banner-text p { color: #ccc; font-size: 14px; }
+.instruction-banner-text p { 
+  color: var(--preto); 
+  font-size: 14px; 
+}
 .instruction-banner-highlight {
-  background: #28a745;
-  color: #fff;
+  background: var(--vinho);
+  color: var(--branco);
   padding: 5px 15px;
   border-radius: 25px;
   font-weight: bold;
@@ -260,14 +307,15 @@ button::after {
 
 /* ===== RECOMENDAÇÕES IA ===== */
 .recommendation-box {
-  background: linear-gradient(135deg, rgba(6, 214, 160, 0.15) 0%, rgba(15, 52, 96, 0.3) 100%);
-  border-radius: 12px;
+  background: var(--branco);
+  border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
-  border: 2px solid #06d6a0;
+  border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .recommendation-title {
-  color: #06d6a0;
+  color: var(--vinho);
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 15px;
@@ -281,23 +329,21 @@ button::after {
   gap: 15px;
 }
 .recommendation-card {
-  background: rgba(0,0,0,0.3);
-  border-radius: 10px;
+  background: var(--off-white);
+  border-radius: 12px;
   padding: 15px;
   text-align: center;
+  border: 1px solid var(--cinza-claro);
 }
-.recommendation-card.gpt { border: 2px solid #10a37f; }
-.recommendation-card.claude { border: 2px solid #7f5af0; }
 .recommendation-card .ai-name {
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0 5px;
+  color: var(--preto);
 }
-.recommendation-card.gpt .ai-name { color: #10a37f; }
-.recommendation-card.claude .ai-name { color: #7f5af0; }
 .recommendation-card .badge {
-  background: #FFD700;
-  color: #1a1a2e;
+  background: var(--vinho);
+  color: var(--branco);
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;
@@ -305,18 +351,25 @@ button::after {
   display: inline-block;
   margin-bottom: 10px;
 }
-.recommendation-card .stats { color: #888; font-size: 13px; margin: 10px 0; }
-.recommendation-card .stats strong { color: #fff; }
+.recommendation-card .stats { 
+  color: var(--cinza); 
+  font-size: 13px; 
+  margin: 10px 0; 
+}
+.recommendation-card .stats strong { 
+  color: var(--vinho); 
+}
 
+/* ===== INFO BOX ===== */
 .info-box {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  background: var(--branco);
+  border-radius: 12px;
   padding: 20px;
   margin-top: 20px;
-  border: 2px solid #0f3460;
+  border: 2px solid var(--vinho);
 }
 .info-title {
-  color: #ffffff !important;
+  color: var(--vinho) !important;
   font-weight: bold;
   margin-bottom: 15px;
   font-size: 16px;
@@ -324,34 +377,135 @@ button::after {
   letter-spacing: 0.5px;
 }
 .info-list {
-  color: #ffffff;
+  color: var(--preto);
   list-style-type: none;
   padding-left: 0;
   margin: 15px 0;
 }
 .info-list li {
   margin-bottom: 10px;
-  color: #ffffff;
+  color: var(--preto);
   font-weight: 500;
 }
-.info-list li strong { color: #06d6a0; font-weight: bold; }
+.info-list li strong { 
+  color: var(--vinho); 
+  font-weight: bold; 
+}
 .info-note {
-  color: #FFD700;
+  color: var(--vinho);
   font-weight: bold;
   font-size: 14px;
   margin-top: 15px;
   padding: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  border-left: 4px solid #FFD700;
+  background: var(--off-white);
+  border-left: 4px solid var(--vinho);
   border-radius: 4px;
   line-height: 1.5;
-  text-transform: uppercase;
 }
 .info-note strong {
-  color: #ffffff;
-  background: rgba(255, 215, 0, 0.2);
+  color: var(--preto);
+  background: rgba(139, 30, 63, 0.1);
   padding: 2px 6px;
   border-radius: 4px;
+}
+
+/* ===== FLUXOGRAMA MINIMALISTA ===== */
+.flow-container {
+  background: var(--branco);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
+}
+.flow-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--vinho);
+  font-weight: bold;
+  font-size: 16px;
+}
+.flow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+.flow-step {
+  flex: 1;
+  min-width: 180px;
+  background: var(--off-white);
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid var(--vinho);
+}
+.flow-step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.flow-step-number {
+  background: var(--vinho);
+  color: var(--branco);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.flow-step-title {
+  color: var(--vinho);
+  font-weight: bold;
+  font-size: 14px;
+}
+.flow-step-content {
+  color: var(--preto);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.flow-step-content .cmd {
+  background: var(--branco);
+  color: var(--vinho);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  border: 1px solid var(--vinho);
+}
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--vinho);
+  font-size: 20px;
+  padding: 0 5px;
+}
+.flow-dica {
+  margin-top: 20px;
+  padding: 12px;
+  background: var(--off-white);
+  border-radius: 8px;
+  color: var(--preto);
+  font-size: 13px;
+  text-align: center;
+  border: 1px dashed var(--vinho);
+}
+.flow-dica strong {
+  color: var(--vinho);
+}
+.flow-exemplo {
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--vinho);
+  border-radius: 8px;
+  color: var(--branco);
+  font-size: 12px;
+  font-family: monospace;
 }
 
 textarea { position: absolute; left: -9999px; }
@@ -364,6 +518,8 @@ textarea { position: absolute; left: -9999px; }
   .recommendation-grid { grid-template-columns: 1fr; }
   .instruction-banner { flex-direction: column; text-align: center; }
   .tabs { flex-wrap: wrap; }
+  .flow-grid { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
 }
 </style>
 </head>
@@ -391,7 +547,7 @@ textarea { position: absolute; left: -9999px; }
 
   <!-- Timer Pomodoro -->
   <div class="timer-container">
-    <div style="font-size: 14px; color: #06d6a0;">⏱️ POMODORO TIMER</div>
+    <div style="font-size: 14px; color: var(--vinho);">⏱️ POMODORO TIMER</div>
     <div class="timer-display" id="timer">25:00</div>
     <div class="timer-controls">
       <button class="timer-btn" onclick="startTimer()">▶️ Iniciar</button>
@@ -404,7 +560,7 @@ textarea { position: absolute; left: -9999px; }
   <div class="recommendation-box">
     <div class="recommendation-title"><span>🤖</span> RECOMENDAÇÃO DE IA</div>
     <div class="recommendation-grid">
-      <div class="recommendation-card gpt">
+      <div class="recommendation-card">
         <div style="font-size: 40px;">🤖</div>
         <div class="ai-name">ChatGPT</div>
         <div class="badge">⭐ RECOMENDADO</div>
@@ -413,7 +569,7 @@ textarea { position: absolute; left: -9999px; }
           <div>⚡ Rigor cirúrgico</div>
         </div>
       </div>
-      <div class="recommendation-card claude">
+      <div class="recommendation-card">
         <div style="font-size: 40px;">🧠</div>
         <div class="ai-name">Claude</div>
         <div class="badge">ALTERNATIVA</div>
@@ -425,122 +581,67 @@ textarea { position: absolute; left: -9999px; }
     </div>
   </div>
 
-  <!-- ===== NOVO FLUXOGRAMA INTEGRADO ===== -->
-  <div style="background: rgba(6, 214, 160, 0.05); border-radius: 16px; padding: 20px; margin: 20px 0; border: 2px solid #06d6a0;">
-
-    <!-- TÍTULO -->
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-      <div style="background: #06d6a0; width: 8px; height: 40px; border-radius: 4px;"></div>
-      <span style="font-size: 24px;">🎯</span>
-      <h3 style="color: #fff; margin: 0;">FLUXO DE ESTUDO AIMME - PASSO A PASSO</h3>
+  <!-- ===== FLUXOGRAMA MINIMALISTA ===== -->
+  <div class="flow-container">
+    <div class="flow-title">
+      <span>📋</span> FLUXO DE ESTUDO RESUMIDO
     </div>
 
-    <!-- ETAPA 1 - CHAT MESTRE -->
-    <div style="background: linear-gradient(135deg, #0f3460, #1a1a2e); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 2px solid #06d6a0;">
+    <div class="flow-grid">
       
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-        <div style="background: #06d6a0; color: #1a1a2e; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px;">1</div>
-        <div>
-          <span style="background: #06d6a0; color: #1a1a2e; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 14px;">ETAPA ÚNICA E OBRIGATÓRIA</span>
-          <h2 style="color: #06d6a0; margin: 5px 0 0 0;">CHAT MESTRE</h2>
+      <!-- Etapa 1 -->
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <span class="flow-step-number">1</span>
+          <span class="flow-step-title">CHAT MESTRE</span>
+        </div>
+        <div class="flow-step-content">
+          <div>📌 Cole material + <span class="cmd">▶️ INICIAR</span></div>
+          <div>📌 Use <span class="cmd">EXPORTAR BLOCO 2</span></div>
         </div>
       </div>
 
-      <div style="display: grid; gap: 15px; margin-bottom: 20px;">
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span style="background: #0f3460; color: #FFD700; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">①</span>
-          <span style="color: #ccc;">Cole seu material (PDF, texto, aula) no chat</span>
+      <!-- Seta -->
+      <div class="flow-arrow">→</div>
+
+      <!-- Etapa 2A -->
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <span class="flow-step-number">2A</span>
+          <span class="flow-step-title">MÚLTIPLA ESCOLHA</span>
         </div>
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span style="background: #0f3460; color: #FFD700; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">②</span>
-          <span style="color: #ccc;">Digite: <span style="background: #0f3460; color: #06d6a0; padding: 4px 10px; border-radius: 20px; font-family: monospace;">▶️ INICIAR</span> (ou aperte ENTER após colar)</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span style="background: #0f3460; color: #FFD700; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">③</span>
-          <span style="color: #ccc;">O Chat Mestre organiza o conteúdo em <strong style="color: #FFD700;">BLOCOS LÓGICOS</strong></span>
+        <div class="flow-step-content">
+          <div>📌 NOVO chat + Bloco</div>
+          <div>📌 + prompt <span class="cmd">AIMME MC</span></div>
+          <div>📌 <span class="cmd">▶️ INICIAR</span></div>
         </div>
       </div>
 
-      <!-- EXPORTAÇÃO -->
-      <div style="background: rgba(255, 215, 0, 0.1); border-left: 4px solid #FFD700; padding: 15px; border-radius: 8px;">
-        <div style="color: #FFD700; font-weight: bold; margin-bottom: 8px;">📤 COMO EXPORTAR UM BLOCO:</div>
-        <div style="color: #ccc;">Digite: <span style="background: #0f3460; color: #06d6a0; padding: 4px 10px; border-radius: 20px; font-family: monospace;">EXPORTAR BLOCO 2</span> (substitua "2" pelo número desejado)</div>
-        <div style="color: #888; font-size: 12px; margin-top: 5px;">O bloco será formatado e pronto para copiar</div>
+      <!-- Seta "ou" -->
+      <div class="flow-arrow">ou</div>
+
+      <!-- Etapa 2B -->
+      <div class="flow-step">
+        <div class="flow-step-header">
+          <span class="flow-step-number">2B</span>
+          <span class="flow-step-title">DISSERTATIVO</span>
+        </div>
+        <div class="flow-step-content">
+          <div>📌 NOVO chat + Bloco</div>
+          <div>📌 + prompt <span class="cmd">AIMME DISS</span></div>
+          <div>📌 <span class="cmd">▶️ INICIAR</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- ETAPA 2 - AIMME -->
-    <div style="background: linear-gradient(135deg, #16213e, #0f3460); border-radius: 12px; padding: 20px; border: 2px solid #FFD700;">
-      
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-        <div style="background: #FFD700; color: #1a1a2e; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px;">2</div>
-        <div>
-          <span style="background: #FFD700; color: #1a1a2e; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 14px;">ESCOLHA UMA DAS OPÇÕES</span>
-          <h2 style="color: #FFD700; margin: 5px 0 0 0;">AIMME MÚLTIPLA ESCOLHA OU DISSERTATIVO</h2>
-        </div>
-      </div>
-
-      <!-- GRID COM AS 2 OPÇÕES -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-        
-        <!-- Opção Múltipla Escolha -->
-        <div style="background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid #06d6a0;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="font-size: 24px;">🧠</span>
-            <span style="color: #06d6a0; font-weight: bold;">MÚLTIPLA ESCOLHA</span>
-          </div>
-          <div style="color: #ccc; font-size: 13px; margin-bottom: 10px;">
-            <div>1. Abra um <strong>NOVO CHAT</strong></div>
-            <div>2. Cole o <strong style="color: #FFD700;">BLOCO EXPORTADO</strong></div>
-            <div>3. Cole o prompt <strong style="color: #FFD700;">AIMME MC</strong> (botão abaixo)</div>
-            <div>4. Digite: <span style="background: #0f3460; color: #06d6a0; padding: 2px 8px; border-radius: 12px;">▶️ INICIAR</span></div>
-          </div>
-          <div style="background: rgba(6, 214, 160, 0.1); padding: 8px; border-radius: 6px; font-size: 12px; color: #aaa;">
-            ⚡ Formato: Flashcards A/B/C/D com validação
-          </div>
-        </div>
-
-        <!-- Opção Dissertativo -->
-        <div style="background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid #FFD700;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="font-size: 24px;">📝</span>
-            <span style="color: #FFD700; font-weight: bold;">DISSERTATIVO</span>
-          </div>
-          <div style="color: #ccc; font-size: 13px; margin-bottom: 10px;">
-            <div>1. Abra um <strong>NOVO CHAT</strong></div>
-            <div>2. Cole o <strong style="color: #FFD700;">BLOCO EXPORTADO</strong></div>
-            <div>3. Cole o prompt <strong style="color: #FFD700;">AIMME DISS</strong> (botão abaixo)</div>
-            <div>4. Digite: <span style="background: #0f3460; color: #06d6a0; padding: 2px 8px; border-radius: 12px;">▶️ INICIAR</span></div>
-          </div>
-          <div style="background: rgba(255, 215, 0, 0.1); padding: 8px; border-radius: 6px; font-size: 12px; color: #aaa;">
-            ⚡ Formato: Perguntas abertas com validação de completude
-          </div>
-        </div>
-      </div>
-
-      <!-- DICA FINAL -->
-      <div style="display: flex; align-items: center; gap: 10px; background: rgba(255, 215, 0, 0.05); padding: 12px; border-radius: 8px;">
-        <span style="font-size: 20px;">💡</span>
-        <span style="color: #ccc; font-size: 13px;">
-          <strong style="color: #FFD700;">IMPORTANTE:</strong> O CHAT MESTRE é usado UMA VEZ por matéria. 
-          Os blocos gerados podem ser reutilizados em vários estudos (MC ou Dissertativo).
-        </span>
-      </div>
+    <!-- Dica -->
+    <div class="flow-dica">
+      💡 <strong>DICA:</strong> Chat Mestre uma vez por matéria. Blocos reutilizáveis.
     </div>
 
-    <!-- EXEMPLO PRÁTICO (ASMA) -->
-    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 10px;">
-      <div style="color: #06d6a0; font-weight: bold; margin-bottom: 8px;">📋 EXEMPLO REAL - ASMA:</div>
-      <div style="color: #aaa; font-size: 13px; font-family: monospace; background: #0f3460; padding: 10px; border-radius: 6px;">
-        1. Cole PDF sobre Asma → ▶️ INICIAR<br>
-        2. Chat Mestre cria 4 blocos:<br>
-        &nbsp;&nbsp;• Bloco 1: Definição e Epidemiologia<br>
-        &nbsp;&nbsp;• Bloco 2: Fisiopatologia (exporte este!)<br>
-        &nbsp;&nbsp;• Bloco 3: Diagnóstico<br>
-        &nbsp;&nbsp;• Bloco 4: Tratamento<br>
-        3. Digite: EXPORTAR BLOCO 2<br>
-        4. Abra NOVO chat → Cole Bloco 2 + prompt AIMME MC → ▶️ INICIAR
-      </div>
+    <!-- Exemplo -->
+    <div class="flow-exemplo">
+      <span style="color: var(--branco);">📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
     </div>
   </div>
 
@@ -557,11 +658,11 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📦</span>
         <div>
-          <h3 style="color: #06d6a0; margin: 0;">Chat Mestre</h3>
+          <h3 style="color: var(--vinho); margin: 0;">Chat Mestre</h3>
           <span class="version-badge">v3.0</span>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
       <div style="margin-bottom: 15px;">
         <span class="cmd-tag">▶️ INICIAR</span>
         <span class="cmd-tag">EXPORTAR BLOCO</span>
@@ -574,11 +675,11 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🧠</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">AIMME Múltipla Escolha</h3>
+          <h3 style="color: var(--vinho); margin: 0;">AIMME Múltipla Escolha</h3>
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Flashcards objetivos com validação</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Flashcards objetivos com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_mc.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -587,11 +688,11 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📝</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">AIMME Dissertativo</h3>
+          <h3 style="color: var(--vinho); margin: 0;">AIMME Dissertativo</h3>
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Respostas elaboradas com validação</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Respostas elaboradas com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_diss.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -603,11 +704,11 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">⚓⚓⚓</span>
         <div>
-          <h3 style="color: #06d6a0; margin: 0;">ANCHOR Deep</h3>
+          <h3 style="color: var(--vinho); margin: 0;">ANCHOR Deep</h3>
           <span class="version-badge">v2.7</span>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ANCORAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_deep.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -616,11 +717,11 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">⚡⚡⚡</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">ANCHOR Speed</h3>
+          <h3 style="color: var(--vinho); margin: 0;">ANCHOR Speed</h3>
           <span class="version-badge">v1.4</span>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ACELERAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_speed.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -632,10 +733,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🎤</span>
         <div>
-          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Clínica</h3>
+          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Clínica</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Relatos com ênfase de professores</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Relatos com ênfase de professores</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -643,10 +744,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📄</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">TEXTO - Clínica</h3>
+          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Clínica</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Manobras, epônimos, condutas</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -654,10 +755,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">💊</span>
         <div>
-          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Farmacologia</h3>
+          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -665,10 +766,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📋</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">TEXTO - Farmacologia</h3>
+          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -676,10 +777,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🔊</span>
         <div>
-          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Não Clínicas</h3>
+          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -687,10 +788,10 @@ textarea { position: absolute; left: -9999px; }
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📑</span>
         <div>
-          <h3 style="color: #FFD700; margin: 0;">TEXTO - Não Clínicas</h3>
+          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: #ccc; margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
