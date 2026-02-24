@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIMME Launcher v2.0</title>
+<title>AIMME Launcher v2.0 - Enhanced</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -12,10 +12,188 @@ body {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   color: #eee;
   min-height: 100vh;
+  transition: background 0.3s ease;
+}
+body.light-theme {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #1a1a2e;
 }
 .container { max-width: 600px; margin: 0 auto; }
-h1 { text-align: center; margin-bottom: 10px; font-size: 28px; }
+
+/* ===== TÍTULO COM GRADIENTE ===== */
+h1 { 
+  text-align: center; 
+  margin-bottom: 10px; 
+  font-size: 32px;
+  background: linear-gradient(135deg, #fff, #06d6a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+body.light-theme h1 {
+  background: linear-gradient(135deg, #1a1a2e, #06d6a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; font-size: 14px; }
+body.light-theme .subtitle { color: #666; }
+
+/* ===== BOTÃO MODO NOTURNO/CLARO ===== */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+.theme-btn {
+  background: #0f3460;
+  border: 2px solid #06d6a0;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body.light-theme .theme-btn {
+  background: #06d6a0;
+  color: #1a1a2e;
+}
+
+/* ===== ABAS DE NAVEGAÇÃO ===== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 50px;
+}
+.tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  color: #888;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 40px;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+.tab.active {
+  background: #06d6a0;
+  color: #1a1a2e;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+/* ===== CARDS COM SOMBRA E HOVER ===== */
+.feature-card {
+  background: linear-gradient(145deg, #1e2a47, #16213e);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px -15px rgba(6, 214, 160, 0.3);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #06d6a0;
+  box-shadow: 0 15px 40px -10px rgba(6, 214, 160, 0.5);
+}
+body.light-theme .feature-card {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  color: #1a1a2e;
+}
+
+/* ===== BADGES DE VERSÃO ===== */
+.version-badge {
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid #FFD700;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  display: inline-block;
+  color: #FFD700;
+}
+
+/* ===== COMANDOS TAGS ===== */
+.cmd-tag {
+  background: #0f3460;
+  color: #06d6a0;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: monospace;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+/* ===== TIMER POMODORO ===== */
+.timer-container {
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  border: 2px solid #06d6a0;
+}
+.timer-display {
+  font-size: 48px;
+  font-weight: bold;
+  color: #06d6a0;
+  margin: 10px 0;
+}
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.timer-btn {
+  background: #0f3460;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.timer-btn:hover {
+  background: #06d6a0;
+  color: #1a1a2e;
+}
+
+/* ===== EXEMPLO PRÁTICO ===== */
+.example-box {
+  background: rgba(6, 214, 160, 0.08);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #06d6a0;
+}
+.example-title {
+  color: #06d6a0;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.example-content {
+  color: #ccc;
+  font-size: 13px;
+  line-height: 1.6;
+}
+body.light-theme .example-content { color: #333; }
+
+/* ===== BOTÕES PRINCIPAIS ===== */
 .button-grid { display: grid; gap: 15px; }
 button {
   padding: 20px; font-size: 16px; font-weight: 600; cursor: pointer;
@@ -61,7 +239,7 @@ button::after {
   border-left: 3px solid #06d6a0; color: #06d6a0; font-size: 14px;
 }
 
-/* ===== BANNER DE INSTRUÇÃO GLOBAL ===== */
+/* ===== INSTRUCTION BANNER ===== */
 .instruction-banner {
   background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
   border: 2px solid #FFD700;
@@ -84,18 +262,13 @@ button::after {
   align-items: center;
   justify-content: center;
 }
-.instruction-banner-text {
-  flex: 1;
-}
+.instruction-banner-text { flex: 1; }
 .instruction-banner-text h3 {
   color: #FFD700;
   margin-bottom: 5px;
   font-size: 18px;
 }
-.instruction-banner-text p {
-  color: #ccc;
-  font-size: 14px;
-}
+.instruction-banner-text p { color: #ccc; font-size: 14px; }
 .instruction-banner-highlight {
   background: #28a745;
   color: #fff;
@@ -106,107 +279,7 @@ button::after {
   white-space: nowrap;
 }
 
-.section-divider {
-  margin-top: 40px;
-  border-top: 2px solid #0f3460;
-  padding-top: 30px;
-}
-
-.section-title {
-  color: #06d6a0;
-  margin-bottom: 10px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-title small {
-  font-size: 14px;
-  color: #888;
-  font-weight: normal;
-}
-
-.section-subtitle {
-  color: #aaa;
-  margin-bottom: 25px;
-  font-size: 18px;
-  border-left: 4px solid #06d6a0;
-  padding-left: 15px;
-}
-
-/* ===== GUIAS POR SEÇÃO ===== */
-.section-guide {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 25px;
-  border: 1px solid #0f3460;
-}
-
-.guide-title {
-  color: #06d6a0;
-  font-weight: bold;
-  margin-bottom: 15px;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.guide-grid {
-  display: grid;
-  gap: 15px;
-}
-
-.guide-item {
-  background: rgba(255,255,255,0.02);
-  border-radius: 8px;
-  padding: 15px;
-  border-left: 4px solid;
-}
-
-.guide-item.primary { border-left-color: #06d6a0; }
-.guide-item.secondary { border-left-color: #FFD700; }
-.guide-item.tertiary { border-left-color: #0f3460; }
-
-.guide-item-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.guide-item-header .emoji-large { font-size: 24px; }
-.guide-item-header strong { color: #fff; font-size: 16px; }
-
-.guide-item-content {
-  color: #aaa;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-left: 34px;
-}
-.guide-item-content strong { color: #FFD700; }
-.guide-item-content .cmd {
-  background: #0f3460;
-  color: #06d6a0;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 13px;
-}
-
-.guide-note {
-  margin-top: 15px;
-  padding: 12px;
-  background: rgba(255, 215, 0, 0.05);
-  border-radius: 8px;
-  color: #FFD700;
-  font-size: 13px;
-  border: 1px dashed #FFD700;
-}
-
-/* ===== RECOMENDAÇÕES ===== */
+/* ===== RECOMENDAÇÕES IA ===== */
 .recommendation-box {
   background: linear-gradient(135deg, rgba(6, 214, 160, 0.15) 0%, rgba(15, 52, 96, 0.3) 100%);
   border-radius: 12px;
@@ -214,7 +287,6 @@ button::after {
   margin: 20px 0;
   border: 2px solid #06d6a0;
 }
-
 .recommendation-title {
   color: #06d6a0;
   font-size: 18px;
@@ -224,26 +296,19 @@ button::after {
   align-items: center;
   gap: 10px;
 }
-
 .recommendation-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
-
 .recommendation-card {
   background: rgba(0,0,0,0.3);
   border-radius: 10px;
   padding: 15px;
   text-align: center;
 }
-
-.recommendation-card.gpt {
-  border: 2px solid #10a37f;
-}
-.recommendation-card.claude {
-  border: 2px solid #7f5af0;
-}
+.recommendation-card.gpt { border: 2px solid #10a37f; }
+.recommendation-card.claude { border: 2px solid #7f5af0; }
 .recommendation-card .ai-name {
   font-size: 20px;
   font-weight: bold;
@@ -261,11 +326,7 @@ button::after {
   display: inline-block;
   margin-bottom: 10px;
 }
-.recommendation-card .stats {
-  color: #888;
-  font-size: 13px;
-  margin: 10px 0;
-}
+.recommendation-card .stats { color: #888; font-size: 13px; margin: 10px 0; }
 .recommendation-card .stats strong { color: #fff; }
 
 .info-box {
@@ -275,7 +336,6 @@ button::after {
   margin-top: 20px;
   border: 2px solid #0f3460;
 }
-
 .info-title {
   color: #ffffff !important;
   font-weight: bold;
@@ -284,25 +344,18 @@ button::after {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .info-list {
   color: #ffffff;
   list-style-type: none;
   padding-left: 0;
   margin: 15px 0;
 }
-
 .info-list li {
   margin-bottom: 10px;
   color: #ffffff;
   font-weight: 500;
 }
-
-.info-list li strong {
-  color: #06d6a0;
-  font-weight: bold;
-}
-
+.info-list li strong { color: #06d6a0; font-weight: bold; }
 .info-note {
   color: #FFD700;
   font-weight: bold;
@@ -315,7 +368,6 @@ button::after {
   line-height: 1.5;
   text-transform: uppercase;
 }
-
 .info-note strong {
   color: #ffffff;
   background: rgba(255, 215, 0, 0.2);
@@ -327,339 +379,259 @@ textarea { position: absolute; left: -9999px; }
 
 @media (max-width: 600px) {
   body { padding: 15px; }
-  h1 { font-size: 24px; }
+  h1 { font-size: 28px; }
   button { padding: 16px; font-size: 15px; }
   button::after { font-size: 7px; }
   .recommendation-grid { grid-template-columns: 1fr; }
   .instruction-banner { flex-direction: column; text-align: center; }
+  .tabs { flex-wrap: wrap; }
 }
 </style>
 </head>
 <body>
 <div class="container">
+  <!-- Botão Modo Noturno/Claro -->
+  <div class="theme-toggle">
+    <button class="theme-btn" onclick="toggleTheme()">
+      <span>🌓</span> Alternar Modo
+    </button>
+  </div>
+
   <h1>⚓ AIMME Launcher</h1>
-  <p class="subtitle">v2.0 • Sistema Completo • 11 Prompts</p>
+  <p class="subtitle">v2.0 • AI-Assisted Microlearning for Medical Education</p>
   
-  <!-- ===== BANNER DE INSTRUÇÃO PRINCIPAL ===== -->
+  <!-- Banner de Instrução -->
   <div class="instruction-banner">
     <div class="instruction-banner-icon">📋</div>
     <div class="instruction-banner-text">
       <h3>COMO USAR O AIMME SYSTEM</h3>
-      <p>1️⃣ Clique no botão do prompt desejado → 2️⃣ O texto é copiado automaticamente → 3️⃣ Cole na sua IA preferida (recomendamos <strong style="color: #10a37f;">ChatGPT</strong>)</p>
+      <p>1️⃣ Clique no botão → 2️⃣ Texto copiado → 3️⃣ Cole no ChatGPT</p>
     </div>
     <div class="instruction-banner-highlight">📋 CLICAR = COPIAR</div>
   </div>
 
-  <!-- ===== RECOMENDAÇÃO DE IA ===== -->
-  <div class="recommendation-box">
-    <div class="recommendation-title">
-      <span>🤖</span> RECOMENDAÇÃO DE IA
+  <!-- Timer Pomodoro -->
+  <div class="timer-container">
+    <div style="font-size: 14px; color: #06d6a0;">⏱️ POMODORO TIMER</div>
+    <div class="timer-display" id="timer">25:00</div>
+    <div class="timer-controls">
+      <button class="timer-btn" onclick="startTimer()">▶️ Iniciar</button>
+      <button class="timer-btn" onclick="pauseTimer()">⏸️ Pausar</button>
+      <button class="timer-btn" onclick="resetTimer()">🔄 Reset</button>
     </div>
+  </div>
+
+  <!-- Recomendação IA -->
+  <div class="recommendation-box">
+    <div class="recommendation-title"><span>🤖</span> RECOMENDAÇÃO DE IA</div>
     <div class="recommendation-grid">
-      <!-- ChatGPT -->
       <div class="recommendation-card gpt">
         <div style="font-size: 40px;">🤖</div>
         <div class="ai-name">ChatGPT</div>
         <div class="badge">⭐ RECOMENDADO</div>
         <div class="stats">
-          <div>✅ <strong>100%</strong> de precisão</div>
-          <div>⚡ Segue prompts com rigor cirúrgico</div>
-          <div>📊 Melhor performance com AIMME</div>
+          <div>✅ <strong>100%</strong> precisão</div>
+          <div>⚡ Rigor cirúrgico</div>
         </div>
-        <div style="color: #10a37f; font-size: 13px; margin-top: 10px;">openai.com/chatgpt</div>
       </div>
-      
-      <!-- Claude (alternativa) -->
       <div class="recommendation-card claude">
         <div style="font-size: 40px;">🧠</div>
         <div class="ai-name">Claude</div>
-        <div class="badge" style="background: #7f5af0; color: #fff;">ALTERNATIVA</div>
+        <div class="badge">ALTERNATIVA</div>
         <div class="stats">
-          <div>✅ <strong>85%</strong> de precisão</div>
-          <div>⚡ Bom, mas menos rigor</div>
-          <div>📊 Pode simplificar prompts densos</div>
-        </div>
-        <div style="color: #7f5af0; font-size: 13px; margin-top: 10px;">claude.ai</div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 15px; color: #FFD700; font-size: 13px;">
-      ⚡ Para máxima performance, use <strong>ChatGPT (versão web ou app)</strong>
-    </div>
-  </div>
-  
-  <!-- ===== SEÇÃO PRINCIPAL - AIMME ===== -->
-  <div class="section-title">
-    <span>🎯</span> NÚCLEO AIMME
-    <small>(arquitetura + treino)</small>
-  </div>
-  
-  <!-- Guia AIMME -->
-  <div class="section-guide">
-    <div class="guide-title">
-      <span>📘</span> GUIA AIMME - FLUXO DE ESTUDO
-    </div>
-    <div class="guide-grid">
-      <div class="guide-item primary">
-        <div class="guide-item-header">
-          <span class="emoji-large">📦</span>
-          <strong>1. CHAT MESTRE (sempre primeiro)</strong>
-        </div>
-        <div class="guide-item-content">
-          <strong>Quando usar:</strong> Ao iniciar uma matéria nova. Organiza todo conteúdo em blocos lógicos.<br>
-          <strong>Como usar:</strong> Cole o material + digite <span class="cmd">▶️ INICIAR</span><br>
-          <strong>Comandos:</strong> <span class="cmd">EXPORTAR BLOCO 2</span>, <span class="cmd">AUDITAR ESTRUTURA</span>
+          <div>✅ <strong>85%</strong> precisão</div>
+          <div>⚡ Menos rigor</div>
         </div>
       </div>
-      
-      <div class="guide-item secondary">
-        <div class="guide-item-header">
-          <span class="emoji-large">🧠</span>
-          <strong>2A. AIMME MÚLTIPLA ESCOLHA</strong>
-        </div>
-        <div class="guide-item-content">
-          <strong>Quando usar:</strong> Após Chat Mestre, para treinar com flashcards objetivos.<br>
-          <strong>Como usar:</strong> Cole o BLOCO + digite <span class="cmd">▶️ INICIAR</span><br>
-          <strong>Formato:</strong> Alternativas A/B/C/D com validação de elaborações.
-        </div>
-      </div>
-      
-      <div class="guide-item secondary">
-        <div class="guide-item-header">
-          <span class="emoji-large">📝</span>
-          <strong>2B. AIMME DISSERTATIVO</strong>
-        </div>
-        <div class="guide-item-content">
-          <strong>Quando usar:</strong> Após Chat Mestre, para treinar respostas elaboradas.<br>
-          <strong>Como usar:</strong> Cole o BLOCO + digite <span class="cmd">▶️ INICIAR</span><br>
-          <strong>Formato:</strong> Perguntas abertas com validação de completude.
-        </div>
-      </div>
-    </div>
-    <div class="guide-note">
-      ⚡ IMPORTANTE: Sempre use o CHAT MESTRE primeiro! Os AIMMEs dependem da estrutura que ele cria.
     </div>
   </div>
 
-  <!-- Botões AIMME -->
-  <div class="button-grid">
-    <button onclick="copiarPrompt(event, 'chat_mestre.txt')">
-      <span class="emoji">📦</span>
-      <span class="text">
-        Chat Mestre
-        <div class="version">v3.0 - Organiza estrutura (USE PRIMEIRO)</div>
-      </span>
-    </button>
-
-    <button onclick="copiarPrompt(event, 'aimme_mc.txt')">
-      <span class="emoji">🧠</span>
-      <span class="text">
-        AIMME Múltipla Escolha
-        <div class="version">v3.2 - Flashcards com validação</div>
-      </span>
-    </button>
-
-    <button onclick="copiarPrompt(event, 'aimme_diss.txt')">
-      <span class="emoji">📝</span>
-      <span class="text">
-        AIMME Dissertativo
-        <div class="version">v3.2 - Respostas elaboradas</div>
-      </span>
-    </button>
+  <!-- Abas de Navegação -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('aimme')">🎯 AIMME</button>
+    <button class="tab" onclick="showTab('anchor')">⚓ ANCHOR</button>
+    <button class="tab" onclick="showTab('notebook')">🛠️ NOTEBOOK</button>
   </div>
-  
-  <!-- ===== SEÇÃO ANCHOR ===== -->
-  <div class="section-divider">
-    <div class="section-title">
-      <span>⚓</span> ANCHOR - MEMORIZAÇÃO
-      <small>(tabelas e critérios)</small>
-    </div>
-    
-    <!-- Guia ANCHOR -->
-    <div class="section-guide">
-      <div class="guide-title">
-        <span>📘</span> GUIA ANCHOR - QUAL USAR?
-      </div>
-      <div class="guide-grid">
-        <div class="guide-item primary">
-          <div class="guide-item-header">
-            <span class="emoji-large">⚓⚓⚓</span>
-            <strong>ANCHOR DEEP (para material denso)</strong>
-          </div>
-          <div class="guide-item-content">
-            <strong>Quando usar:</strong> Tabelas complexas, múltiplas exceções, critérios detalhados.<br>
-            <strong>Como usar:</strong> Cole o conteúdo + digite <span class="cmd">▶️ ANCORAR</span><br>
-            <strong>Exemplo:</strong> Classificação de HAS, critérios diagnósticos de Lúpus.
-          </div>
-        </div>
-        
-        <div class="guide-item secondary">
-          <div class="guide-item-header">
-            <span class="emoji-large">⚡⚡⚡</span>
-            <strong>ANCHOR SPEED (para revisão rápida)</strong>
-          </div>
-          <div class="guide-item-content">
-            <strong>Quando usar:</strong> Conteúdo direto, revisão de véspera, memorização simples.<br>
-            <strong>Como usar:</strong> Cole o conteúdo + digite <span class="cmd">▶️ ACELERAR</span><br>
-            <strong>Exemplo:</strong> Tabela de doses, lista de contraindicações.
-          </div>
+
+  <!-- Conteúdo AIMME -->
+  <div id="aimme" class="tab-content active">
+    <!-- Cards AIMME -->
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">📦</span>
+        <div>
+          <h3 style="color: #06d6a0; margin: 0;">Chat Mestre</h3>
+          <span class="version-badge">v3.0</span>
         </div>
       </div>
-      <div class="guide-note">
-        ⚡ DICA: Deep para FIXAR, Speed para REVISAR. Use Speed depois de já ter feito Deep uma vez.
+      <div style="color: #ccc; margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
+      <div style="margin-bottom: 15px;">
+        <span class="cmd-tag">▶️ INICIAR</span>
+        <span class="cmd-tag">EXPORTAR BLOCO</span>
+        <span class="cmd-tag">AUDITAR</span>
       </div>
+      <button onclick="copiarPrompt(event, 'chat_mestre.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
-    <!-- Botões ANCHOR -->
-    <div class="button-grid">
-      <button onclick="copiarPrompt(event, 'anchor_deep.txt')">
-        <span class="emoji">⚓</span>
-        <span class="text">
-          ANCHOR Deep
-          <div class="version">v2.7 - Memorização densa (tabelas complexas)</div>
-        </span>
-      </button>
-      
-      <button onclick="copiarPrompt(event, 'anchor_speed.txt')">
-        <span class="emoji">⚡</span>
-        <span class="text">
-          ANCHOR Speed
-          <div class="version">v1.4 - Memorização rápida (revisão)</div>
-        </span>
-      </button>
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">🧠</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">AIMME Múltipla Escolha</h3>
+          <span class="version-badge">v3.2</span>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Flashcards objetivos com validação</div>
+      <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
+      <button onclick="copiarPrompt(event, 'aimme_mc.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">📝</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">AIMME Dissertativo</h3>
+          <span class="version-badge">v3.2</span>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Respostas elaboradas com validação</div>
+      <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
+      <button onclick="copiarPrompt(event, 'aimme_diss.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <!-- Exemplo Prático -->
+    <div class="example-box">
+      <div class="example-title">📋 EXEMPLO PRÁTICO - ASMA</div>
+      <div class="example-content">
+        1. Cole PDF sobre Asma → ▶️ INICIAR<br>
+        2. Chat Mestre cria 4 blocos<br>
+        3. Exporte BLOCO 2 (Fisiopatologia)<br>
+        4. Cole no AIMME MC → ▶️ INICIAR
+      </div>
     </div>
   </div>
 
-  <!-- ===== SEÇÃO NOTEBOOK LM ===== -->
-  <div class="section-divider">
-    <div class="section-title">
-      <span>🛠️</span> NOTEBOOK LM
-      <small>(transcrição inteligente)</small>
-    </div>
-    
-    <!-- Guia NOTEBOOK LM -->
-    <div class="section-guide">
-      <div class="guide-title">
-        <span>📘</span> GUIA NOTEBOOK LM - QUAL PROMPT USAR?
-      </div>
-      <div class="guide-grid">
-        
-        <div class="guide-item primary">
-          <div class="guide-item-header">
-            <span class="emoji-large">🎤📄</span>
-            <strong>MATÉRIAS CLÍNICAS</strong>
-          </div>
-          <div class="guide-item-content">
-            <strong>ÁUDIO:</strong> Relatos de casos, ênfase de professores, discussões de staff.<br>
-            <strong>TEXTO:</strong> Manobras semiológicas, epônimos, condutas detalhadas.<br>
-            <span class="cmd">▶️ TRANSCREVER ÁUDIO CLÍNICA</span> ou <span class="cmd">▶️ TRANSCREVER TEXTO CLÍNICA</span>
-          </div>
-        </div>
-        
-        <div class="guide-item secondary">
-          <div class="guide-item-header">
-            <span class="emoji-large">💊📋</span>
-            <strong>FARMACOLOGIA/TOXICOLOGIA</strong>
-          </div>
-          <div class="guide-item-content">
-            <strong>ÁUDIO/TEXTO:</strong> Foco em DOSAGENS. Único prompt que extrai doses com precisão cirúrgica.<br>
-            <span class="cmd">▶️ TRANSCREVER ÁUDIO FARMA</span> ou <span class="cmd">▶️ TRANSCREVER TEXTO FARMA</span>
-          </div>
-        </div>
-        
-        <div class="guide-item tertiary">
-          <div class="guide-item-header">
-            <span class="emoji-large">🔊📑</span>
-            <strong>MATÉRIAS NÃO CLÍNICAS</strong>
-          </div>
-          <div class="guide-item-content">
-            <strong>ÁUDIO/TEXTO:</strong> Saúde Pública, Medicina Legal, Ética (conteúdo teórico denso).<br>
-            <span class="cmd">▶️ TRANSCREVER ÁUDIO NÃO CLÍNICA</span> ou <span class="cmd">▶️ TRANSCREVER TEXTO NÃO CLÍNICA</span>
-          </div>
+  <!-- Conteúdo ANCHOR -->
+  <div id="anchor" class="tab-content">
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">⚓⚓⚓</span>
+        <div>
+          <h3 style="color: #06d6a0; margin: 0;">ANCHOR Deep</h3>
+          <span class="version-badge">v2.7</span>
         </div>
       </div>
-      <div class="guide-note">
-        ⚡ RECOMENDAÇÃO: Extraia FONTE POR FONTE no Notebook LM. Áudios de 30-45min = máxima densidade.
-      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
+      <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ANCORAR</span></div>
+      <button onclick="copiarPrompt(event, 'anchor_deep.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
-    <!-- Botões Notebook LM -->
-    <div class="button-grid">
-      <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')">
-        <span class="emoji">🎤</span>
-        <span class="text">
-          ÁUDIO - Clínica
-          <div class="version">Relatos com ênfase de professores/staff</div>
-        </span>
-      </button>
-
-      <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')">
-        <span class="emoji">📄</span>
-        <span class="text">
-          TEXTO - Clínica
-          <div class="version">Manobras, epônimos, condutas</div>
-        </span>
-      </button>
-
-      <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')">
-        <span class="emoji">💊</span>
-        <span class="text">
-          ÁUDIO - Farmacologia
-          <div class="version">Foco em DOSAGENS</div>
-        </span>
-      </button>
-
-      <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')">
-        <span class="emoji">📋</span>
-        <span class="text">
-          TEXTO - Farmacologia
-          <div class="version">Foco em DOSAGENS</div>
-        </span>
-      </button>
-
-      <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')">
-        <span class="emoji">🔊</span>
-        <span class="text">
-          ÁUDIO - Não Clínicas
-          <div class="version">Saúde Pública, Medicina Legal, Ética</div>
-        </span>
-      </button>
-
-      <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')">
-        <span class="emoji">📑</span>
-        <span class="text">
-          TEXTO - Não Clínicas
-          <div class="version">Saúde Pública, Medicina Legal, Ética</div>
-        </span>
-      </button>
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">⚡⚡⚡</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">ANCHOR Speed</h3>
+          <span class="version-badge">v1.4</span>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
+      <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ACELERAR</span></div>
+      <button onclick="copiarPrompt(event, 'anchor_speed.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
-  
-  <!-- STATUS E FOOTER -->
+
+  <!-- Conteúdo NOTEBOOK LM -->
+  <div id="notebook" class="tab-content">
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">🎤</span>
+        <div>
+          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Clínica</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Relatos com ênfase de professores</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">📄</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">TEXTO - Clínica</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Manobras, epônimos, condutas</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">💊</span>
+        <div>
+          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Farmacologia</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">📋</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">TEXTO - Farmacologia</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">🔊</span>
+        <div>
+          <h3 style="color: #06d6a0; margin: 0;">ÁUDIO - Não Clínicas</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+
+    <div class="feature-card">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 32px;">📑</span>
+        <div>
+          <h3 style="color: #FFD700; margin: 0;">TEXTO - Não Clínicas</h3>
+        </div>
+      </div>
+      <div style="color: #ccc; margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+    </div>
+  </div>
+
+  <!-- Status -->
   <div id="status" class="status" style="display: none;"></div>
   
+  <!-- Footer -->
   <div class="footer">
-    AIMME System • Pedro Nunes (UMAX - 8º semestre)<br>
-    v2.0 • 11 Prompts • Criado por revolta contra leitura passiva
+    AIMME System • Pedro Nunes (Estudante de medicina - 8º semestre)<br>
+    v2.0 • AI-Assisted Microlearning for Medical Education •
   </div>
 </div>
 
 <textarea id="copyArea"></textarea>
 
 <script>
+// Função de cópia
 async function copiarPrompt(event, arquivo) {
     const botao = event.currentTarget;
-    
     const originalHTML = botao.innerHTML;
     const originalBg = botao.style.backgroundColor;
-    const originalClass = botao.className;
     
     try {
         const resposta = await fetch(`prompts/${arquivo}`);
-        
         if (!resposta.ok) throw new Error('Arquivo não encontrado');
-        
         const texto = await resposta.text();
-        
         await navigator.clipboard.writeText(texto);
         
         botao.classList.add('copied');
@@ -674,15 +646,11 @@ async function copiarPrompt(event, arquivo) {
         
         const status = document.getElementById('status');
         status.style.display = 'block';
-        status.textContent = `✅ Prompt '${arquivo}' copiado! Agora cole no ChatGPT (ou IA preferida)`;
-        setTimeout(() => {
-            status.style.display = 'none';
-        }, 4000);
+        status.textContent = `✅ Prompt copiado! Cole no ChatGPT`;
+        setTimeout(() => { status.style.display = 'none'; }, 3000);
         
     } catch (erro) {
-        console.error(erro);
-        alert(`Erro ao copiar: arquivo '${arquivo}' não encontrado na pasta 'prompts'.`);
-        
+        alert(`Erro: arquivo não encontrado`);
         botao.innerHTML = "❌ ERRO";
         botao.style.backgroundColor = "#dc3545";
         setTimeout(() => {
@@ -690,6 +658,57 @@ async function copiarPrompt(event, arquivo) {
             botao.style.backgroundColor = originalBg;
         }, 2000);
     }
+}
+
+// Abas
+function showTab(tabName) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+    document.getElementById(tabName).classList.add('active');
+}
+
+// Timer
+let timerInterval;
+let seconds = 25 * 60;
+let running = false;
+
+function updateTimerDisplay() {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function startTimer() {
+    if (running) return;
+    running = true;
+    timerInterval = setInterval(() => {
+        if (seconds > 0) {
+            seconds--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            running = false;
+            alert("⏰ Tempo encerrado!");
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    running = false;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    running = false;
+    seconds = 25 * 60;
+    updateTimerDisplay();
+}
+
+// Tema
+function toggleTheme() {
+    document.body.classList.toggle('light-theme');
 }
 </script>
 </body>
