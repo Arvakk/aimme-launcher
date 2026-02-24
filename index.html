@@ -3,188 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIMME Launcher v2.0 - Elegant</title>
+<title>AIMME Launcher v2.0</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== PALETA VINHO ===== */
+/* ===== PALETA DE CORES ===== */
 :root {
   --vinho: #8B1E3F;
   --vinho-escuro: #6B162F;
-  --vinho-suave: #E8B4B8;
-  --branco: #FFFFFF;
-  --off-white: #F5F5F7;
-  --preto: #333333;
-  --cinza: #666666;
-  --cinza-claro: #CCCCCC;
   --bg-escuro: #1a1a2e;
   --bg-card: #16213e;
-}
-
-/* ===== MODO CLARO (AJUSTADO - MAIS ESCURECIDO) ===== */
-body.light-mode {
-  --bg-escuro: #e8eaf0;
-  --bg-card: #d0d4e0;
-  --branco: #f0f2f5;
-  --off-white: #e0e4ec;
-  --preto: #222222;
-  --cinza: #444444;
-  --texto-primario: #222222;
-  --texto-secundario: #444444;
+  --texto-primario: #ffffff;
+  --texto-secundario: #cccccc;
+  --texto-cinza: #888888;
+  --borda: #0f3460;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   padding: 20px;
   background: var(--bg-escuro);
-  color: var(--preto);
+  color: var(--texto-primario);
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container { max-width: 600px; margin: 0 auto; }
 
-/* ===== TÍTULOS ===== */
 h1 { 
   text-align: center; 
   margin-bottom: 10px; 
   font-size: 32px;
   color: var(--vinho);
-  font-weight: 700;
 }
 
 .subtitle { 
   text-align: center; 
-  color: var(--cinza); 
+  color: var(--texto-cinza); 
   margin-bottom: 30px; 
   font-size: 14px; 
 }
 
-/* ===== BOTÃO MODO CLARO/ESCURO ===== */
-.theme-toggle {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 15px;
-}
-.theme-btn {
-  background: var(--branco);
+/* ===== BANNER DE INSTRUÇÃO CORRIGIDO ===== */
+.instruction-banner {
+  background: var(--bg-card);
   border: 2px solid var(--vinho);
-  color: var(--vinho);
-  padding: 8px 16px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 14px;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.3s;
-}
-.theme-btn:hover {
-  background: var(--vinho);
-  color: var(--branco);
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* ===== ABAS DE NAVEGAÇÃO ===== */
-.tabs {
+.instruction-banner-icon {
+  font-size: 40px;
+  background: var(--vinho);
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
-  background: var(--branco);
-  padding: 10px;
-  border-radius: 50px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
-.tab {
+
+.instruction-banner-text {
   flex: 1;
-  padding: 12px;
-  border: none;
-  background: transparent;
-  color: var(--cinza);
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 40px;
-  transition: all 0.3s;
-  font-size: 14px;
-}
-.tab.active {
-  background: var(--vinho);
-  color: var(--branco);
-}
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: block;
+  min-width: 300px;
 }
 
-/* ===== CARDS ===== */
-.feature-card {
-  background: var(--branco);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
-  border: 1px solid var(--cinza-claro);
-  transition: all 0.3s ease;
-}
-.feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.25);
-  border-color: var(--vinho);
-}
-
-/* ===== BADGES DE VERSÃO ===== */
-.version-badge {
-  background: var(--vinho-suave);
-  color: var(--vinho-escuro);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  display: inline-block;
-}
-
-/* ===== COMANDOS TAGS ===== */
-.cmd-tag {
-  background: var(--off-white);
+.instruction-banner-text h3 {
   color: var(--vinho);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 600;
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  border: 1px solid var(--vinho);
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 
-/* ===== TIMER POMODORO - CORREÇÃO DOS BOTÕES ===== */
+.instruction-steps {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+}
+
+.step-arrow {
+  color: var(--vinho);
+  font-size: 20px;
+}
+
+.instruction-banner-highlight {
+  background: var(--vinho);
+  color: white;
+  padding: 6px 15px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* ===== TIMER POMODORO ===== */
 .timer-container {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
-  text-align: center;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
+
 .timer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: var(--vinho);
-  font-size: 14px;
   font-weight: bold;
 }
+
 .timer-display {
   font-size: 48px;
   font-weight: bold;
   color: var(--vinho);
-  margin: 10px 0;
+  text-align: center;
+  margin: 15px 0;
   font-family: monospace;
 }
+
 .timer-controls {
   display: flex;
   gap: 10px;
@@ -192,42 +146,121 @@ h1 {
   flex-wrap: wrap;
   margin: 15px 0;
 }
+
 .timer-btn {
-  background: var(--branco);
+  background: transparent;
   border: 2px solid var(--vinho);
   color: var(--vinho);
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.3s;
-  flex: 1 1 auto;
   min-width: 90px;
-  max-width: 120px;
-  white-space: nowrap;
-  font-size: 14px;
+  transition: all 0.3s;
 }
+
 .timer-btn:hover {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
 }
+
 .timer-stats {
   display: flex;
   justify-content: space-around;
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid var(--cinza-claro);
-  color: var(--cinza);
-  font-size: 13px;
+  border-top: 1px solid var(--borda);
+  color: var(--texto-cinza);
 }
+
 .timer-stats span {
   color: var(--vinho);
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+/* ===== ABAS DE NAVEGAÇÃO ===== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  background: var(--bg-card);
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid var(--borda);
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  color: var(--texto-cinza);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 40px;
+  transition: all 0.3s;
+}
+
+.tab.active {
+  background: var(--vinho);
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ===== CARDS ===== */
+.feature-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--borda);
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--vinho);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.3);
+}
+
+/* ===== BADGES E TAGS ===== */
+.version-badge {
+  background: rgba(139, 30, 63, 0.3);
+  color: var(--vinho);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  display: inline-block;
+  border: 1px solid var(--vinho);
+}
+
+.cmd-tag {
+  background: rgba(139, 30, 63, 0.2);
+  color: var(--vinho);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: monospace;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 1px solid var(--vinho);
 }
 
 /* ===== BOTÕES PRINCIPAIS ===== */
-.button-grid { display: grid; gap: 15px; }
+.button-grid {
+  display: grid;
+  gap: 15px;
+}
+
 button {
   padding: 20px;
   font-size: 16px;
@@ -235,217 +268,196 @@ button {
   cursor: pointer;
   border: 2px solid var(--vinho);
   border-radius: 12px;
-  background: var(--branco);
-  color: var(--preto);
-  transition: all 0.3s ease;
+  background: var(--bg-card);
+  color: var(--texto-primario);
+  transition: all 0.3s;
   text-align: left;
   display: flex;
   align-items: center;
   gap: 12px;
   position: relative;
-  overflow: hidden;
+  width: 100%;
 }
-button:hover { 
+
+button:hover {
   background: var(--vinho);
-  color: var(--branco);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.3);
 }
-button:hover .version {
-  color: var(--branco) !important;
-}
-button:active { transform: translateY(0); }
+
 button::after {
-  content: "📋 CLICAR PARA COPIAR";
+  content: "📋 COPIAR";
   position: absolute;
   bottom: 5px;
   right: 10px;
   font-size: 8px;
-  color: var(--cinza);
-  font-weight: normal;
-  letter-spacing: 0.5px;
+  color: var(--texto-cinza);
 }
+
 button:hover::after {
   color: rgba(255,255,255,0.7);
 }
-.copied { 
-  background: #28a745 !important; 
-  border-color: #28a745 !important; 
-  color: var(--branco) !important;
-}
-.copied::after { 
-  content: "✅ COPIADO!"; 
-  color: var(--branco) !important; 
-}
-.emoji { font-size: 24px; }
-.text { flex: 1; }
 
-.version { 
-  font-size: 12px; 
+.copied {
+  background: #28a745 !important;
+  border-color: #28a745 !important;
+}
+
+.copied::after {
+  content: "✅ COPIADO!" !important;
+  color: white !important;
+}
+
+.emoji {
+  font-size: 24px;
+}
+
+.text {
+  flex: 1;
+}
+
+.version {
+  font-size: 12px;
   color: var(--vinho) !important;
-  font-weight: bold !important;
+  font-weight: bold;
   margin-top: 4px;
 }
 
-.footer { 
-  text-align: center; 
-  margin-top: 40px; 
-  color: var(--cinza); 
-  font-size: 12px; 
-}
-
-.status {
-  text-align: center;
-  margin-top: 20px;
-  padding: 15px;
-  background: var(--branco);
-  border-radius: 8px;
-  border-left: 4px solid var(--vinho);
-  color: var(--preto);
-  font-size: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* ===== INSTRUCTION BANNER ===== */
-.instruction-banner {
-  background: var(--branco);
-  border: 2px solid var(--vinho);
+/* ===== GUIAS INTERNOS ===== */
+.tab-guide {
+  background: rgba(139, 30, 63, 0.1);
   border-radius: 12px;
   padding: 15px;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--vinho);
 }
-.instruction-banner-icon {
-  font-size: 32px;
-  background: var(--vinho);
-  color: var(--branco);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.instruction-banner-text { flex: 1; }
-.instruction-banner-text h3 {
+
+.tab-guide-title {
   color: var(--vinho);
-  margin-bottom: 5px;
-  font-size: 18px;
-}
-.instruction-banner-text p { 
-  color: var(--preto); 
-  font-size: 14px; 
-}
-.instruction-banner-highlight {
-  background: var(--vinho);
-  color: var(--branco);
-  padding: 5px 15px;
-  border-radius: 25px;
   font-weight: bold;
-  font-size: 14px;
-  white-space: nowrap;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-guide-content {
+  color: var(--texto-secundario);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.tab-guide-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tab-guide-content li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.tab-guide-content li:before {
+  content: "•";
+  color: var(--vinho);
+  position: absolute;
+  left: 5px;
+}
+
+.tab-note {
+  background: rgba(139, 30, 63, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 15px;
+  border-left: 4px solid var(--vinho);
 }
 
 /* ===== RECOMENDAÇÕES IA ===== */
 .recommendation-box {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
+
 .recommendation-title {
   color: var(--vinho);
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
+
 .recommendation-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
+
 .recommendation-card {
-  background: var(--off-white);
+  background: rgba(255,255,255,0.05);
   border-radius: 12px;
   padding: 15px;
   text-align: center;
-  border: 1px solid var(--cinza-claro);
 }
+
 .recommendation-card .ai-name {
   font-size: 20px;
   font-weight: bold;
-  margin: 10px 0 5px;
-  color: var(--preto);
+  margin: 10px 0;
 }
+
 .recommendation-card .badge {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;
-  font-weight: bold;
   display: inline-block;
   margin-bottom: 10px;
 }
-.recommendation-card .stats { 
-  color: var(--cinza); 
-  font-size: 13px; 
-  margin: 10px 0; 
-}
-.recommendation-card .stats strong { 
-  color: var(--vinho); 
-}
 
-/* ===== FLUXOGRAMA MINIMALISTA ===== */
+/* ===== FLUXOGRAMA ===== */
 .flow-container {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
+
 .flow-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
   color: var(--vinho);
   font-weight: bold;
-  font-size: 16px;
+  margin-bottom: 20px;
 }
+
 .flow-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
 }
+
 .flow-step {
   flex: 1;
-  min-width: 160px;
-  background: var(--off-white);
+  min-width: 150px;
+  background: rgba(255,255,255,0.05);
   padding: 15px;
   border-radius: 12px;
   border-left: 4px solid var(--vinho);
 }
+
 .flow-step-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
+
 .flow-step-number {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -453,155 +465,127 @@ button:hover::after {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 14px;
 }
+
 .flow-step-title {
   color: var(--vinho);
   font-weight: bold;
-  font-size: 14px;
 }
+
 .flow-step-content {
-  color: var(--preto);
-  font-size: 13px;
-  line-height: 1.8;
-}
-.flow-step-content .cmd {
-  background: var(--branco);
-  color: var(--vinho);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
+  color: var(--texto-secundario);
   font-size: 12px;
-  border: 1px solid var(--vinho);
+  line-height: 1.6;
 }
+
 .flow-arrow {
-  display: flex;
-  align-items: center;
   color: var(--vinho);
   font-size: 20px;
-  padding: 0 5px;
+  display: flex;
+  align-items: center;
 }
+
 .flow-dica {
   margin-top: 20px;
   padding: 12px;
-  background: var(--off-white);
+  background: rgba(139, 30, 63, 0.1);
   border-radius: 8px;
-  color: var(--preto);
-  font-size: 13px;
   text-align: center;
   border: 1px dashed var(--vinho);
 }
-.flow-dica strong {
-  color: var(--vinho);
-}
+
 .flow-exemplo {
   margin-top: 15px;
   padding: 12px;
   background: var(--vinho);
   border-radius: 8px;
-  color: var(--branco);
+  color: white;
   font-size: 12px;
   font-family: monospace;
 }
 
-/* ===== GUIAS INTERNOS DAS ABAS ===== */
-.tab-guide {
-  background: var(--off-white);
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-left: 4px solid var(--vinho);
-}
-.tab-guide-title {
-  color: var(--vinho);
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tab-guide-content {
-  color: var(--preto);
-  font-size: 13px;
-  line-height: 1.6;
-}
-.tab-guide-content ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-.tab-guide-content li {
-  margin-bottom: 8px;
-  padding-left: 20px;
-  position: relative;
-}
-.tab-guide-content li:before {
-  content: "•";
-  color: var(--vinho);
-  font-weight: bold;
-  position: absolute;
-  left: 5px;
-}
-.tab-guide-content strong {
-  color: var(--vinho);
-}
-.tab-note {
-  background: rgba(139, 30, 63, 0.1);
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 15px;
-  border-left: 4px solid var(--vinho);
-  color: var(--preto);
-  font-size: 13px;
-}
-.tab-note strong {
-  color: var(--vinho);
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: var(--texto-cinza);
+  font-size: 12px;
 }
 
-textarea { position: absolute; left: -9999px; }
+.status {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--vinho);
+  border-radius: 8px;
+}
+
+textarea {
+  position: absolute;
+  left: -9999px;
+}
 
 @media (max-width: 600px) {
-  body { padding: 15px; }
-  h1 { font-size: 28px; }
-  button { padding: 16px; font-size: 15px; }
-  button::after { font-size: 7px; }
-  .recommendation-grid { grid-template-columns: 1fr; }
-  .instruction-banner { flex-direction: column; text-align: center; }
-  .tabs { flex-wrap: wrap; }
-  .flow-grid { flex-direction: column; }
-  .flow-arrow { transform: rotate(90deg); }
-  .timer-controls { flex-direction: row; }
-  .timer-btn { max-width: none; }
+  .instruction-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .step-arrow {
+    transform: rotate(90deg);
+    margin-left: 15px;
+  }
+  
+  .timer-controls {
+    flex-direction: column;
+  }
+  
+  .timer-btn {
+    width: 100%;
+  }
+  
+  .recommendation-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .flow-grid {
+    flex-direction: column;
+  }
+  
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <!-- Botão Modo Claro/Escuro -->
-  <div class="theme-toggle">
-    <button class="theme-btn" onclick="toggleTheme()">
-      <span>🌓</span> <span id="themeText">Modo Escuro</span>
-    </button>
-  </div>
-
   <h1>⚓ AIMME Launcher</h1>
   <p class="subtitle">v2.0 • Sistema Completo • 11 Prompts</p>
   
-  <!-- Banner de Instrução -->
+  <!-- BANNER DE INSTRUÇÃO CORRIGIDO -->
   <div class="instruction-banner">
     <div class="instruction-banner-icon">📋</div>
     <div class="instruction-banner-text">
       <h3>COMO USAR O AIMME SYSTEM</h3>
-      <p>1️⃣ Clique no botão → 2️⃣ Texto copiado → 3️⃣ Cole no ChatGPT</p>
+      <div class="instruction-steps">
+        <span class="step-item">1️⃣ Clique no botão</span>
+        <span class="step-arrow">→</span>
+        <span class="step-item">2️⃣ Texto copiado</span>
+        <span class="step-arrow">→</span>
+        <span class="step-item">3️⃣ Cole no ChatGPT</span>
+      </div>
+      <span class="instruction-banner-highlight">📋 CLICAR = COPIAR</span>
     </div>
-    <div class="instruction-banner-highlight">📋 CLICAR = COPIAR</div>
   </div>
 
-  <!-- Timer Pomodoro com Contador -->
+  <!-- TIMER POMODORO -->
   <div class="timer-container">
     <div class="timer-header">
       <span>⏱️ POMODORO TIMER</span>
-      <span class="timer-counter" id="pomodoroCount">0 🍅</span>
+      <span id="pomodoroCount">0 🍅</span>
     </div>
     <div class="timer-display" id="timer">25:00</div>
     <div class="timer-controls">
@@ -615,283 +599,231 @@ textarea { position: absolute; left: -9999px; }
     </div>
   </div>
 
-  <!-- Recomendação IA -->
+  <!-- RECOMENDAÇÃO IA -->
   <div class="recommendation-box">
-    <div class="recommendation-title"><span>🤖</span> RECOMENDAÇÃO DE IA</div>
+    <div class="recommendation-title">🤖 RECOMENDAÇÃO DE IA</div>
     <div class="recommendation-grid">
       <div class="recommendation-card">
         <div style="font-size: 40px;">🤖</div>
         <div class="ai-name">ChatGPT</div>
         <div class="badge">⭐ RECOMENDADO</div>
-        <div class="stats">
-          <div>✅ <strong>100%</strong> precisão</div>
-          <div>⚡ Rigor cirúrgico</div>
-        </div>
+        <div class="stats">100% precisão • Rigor cirúrgico</div>
       </div>
       <div class="recommendation-card">
         <div style="font-size: 40px;">🧠</div>
         <div class="ai-name">Claude</div>
         <div class="badge">ALTERNATIVA</div>
-        <div class="stats">
-          <div>✅ <strong>85%</strong> precisão</div>
-          <div>⚡ Menos rigor</div>
-        </div>
+        <div class="stats">85% precisão • Menos rigor</div>
       </div>
     </div>
   </div>
 
-  <!-- FLUXOGRAMA MINIMALISTA -->
+  <!-- FLUXOGRAMA -->
   <div class="flow-container">
-    <div class="flow-title">
-      <span>📋</span> FLUXO DE ESTUDO RESUMIDO
-    </div>
-
+    <div class="flow-title">📋 FLUXO DE ESTUDO RESUMIDO</div>
     <div class="flow-grid">
-      
-      <!-- Etapa 1 -->
       <div class="flow-step">
         <div class="flow-step-header">
           <span class="flow-step-number">1</span>
           <span class="flow-step-title">CHAT MESTRE</span>
         </div>
         <div class="flow-step-content">
-          <div>📌 Cole material + <span class="cmd">▶️ INICIAR</span></div>
-          <div>📌 Use <span class="cmd">EXPORTAR BLOCO 2</span></div>
+          📌 Cole material + ▶️ INICIAR<br>
+          📌 EXPORTAR BLOCO 2
         </div>
       </div>
-
-      <!-- Seta -->
       <div class="flow-arrow">→</div>
-
-      <!-- Etapa 2A -->
       <div class="flow-step">
         <div class="flow-step-header">
           <span class="flow-step-number">2A</span>
           <span class="flow-step-title">MÚLTIPLA ESCOLHA</span>
         </div>
         <div class="flow-step-content">
-          <div>📌 NOVO chat + Bloco</div>
-          <div>📌 + prompt <span class="cmd">AIMME MC</span></div>
-          <div>📌 <span class="cmd">▶️ INICIAR</span></div>
+          📌 NOVO chat + Bloco<br>
+          📌 + AIMME MC + ▶️ INICIAR
         </div>
       </div>
-
-      <!-- Seta "ou" -->
       <div class="flow-arrow">ou</div>
-
-      <!-- Etapa 2B -->
       <div class="flow-step">
         <div class="flow-step-header">
           <span class="flow-step-number">2B</span>
           <span class="flow-step-title">DISSERTATIVO</span>
         </div>
         <div class="flow-step-content">
-          <div>📌 NOVO chat + Bloco</div>
-          <div>📌 + prompt <span class="cmd">AIMME DISS</span></div>
-          <div>📌 <span class="cmd">▶️ INICIAR</span></div>
+          📌 NOVO chat + Bloco<br>
+          📌 + AIMME DISS + ▶️ INICIAR
         </div>
       </div>
     </div>
-
-    <!-- Dica -->
-    <div class="flow-dica">
-      💡 <strong>DICA:</strong> Chat Mestre uma vez por matéria. Blocos reutilizáveis.
-    </div>
-
-    <!-- Exemplo -->
-    <div class="flow-exemplo">
-      <span style="color: var(--branco);">📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
-    </div>
+    <div class="flow-dica">💡 Chat Mestre uma vez por matéria. Blocos reutilizáveis.</div>
+    <div class="flow-exemplo">📋 EXEMPLO: PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR</div>
   </div>
 
-  <!-- Abas de Navegação -->
+  <!-- ABAS -->
   <div class="tabs">
     <button class="tab active" onclick="showTab('aimme')">🎯 AIMME</button>
     <button class="tab" onclick="showTab('anchor')">⚓ ANCHOR</button>
     <button class="tab" onclick="showTab('notebook')">🛠️ NOTEBOOK</button>
   </div>
 
-  <!-- Conteúdo AIMME -->
+  <!-- CONTEÚDO AIMME -->
   <div id="aimme" class="tab-content active">
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📦</span>
         <div>
-          <h3 style="color: var(--vinho); margin: 0;">Chat Mestre</h3>
+          <h3 style="color: var(--vinho);">Chat Mestre</h3>
           <span class="version-badge">v3.0</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
+      <div style="margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
       <div style="margin-bottom: 15px;">
         <span class="cmd-tag">▶️ INICIAR</span>
         <span class="cmd-tag">EXPORTAR BLOCO</span>
         <span class="cmd-tag">AUDITAR</span>
       </div>
-      <button onclick="copiarPrompt(event, 'chat_mestre.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <button onclick="copiarPrompt(event, 'chat_mestre.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🧠</span>
         <div>
-          <h3 style="color: var(--vinho); margin: 0;">AIMME Múltipla Escolha</h3>
+          <h3 style="color: var(--vinho);">AIMME Múltipla Escolha</h3>
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Flashcards objetivos com validação</div>
+      <div style="margin-bottom: 15px;">Flashcards objetivos com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
-      <button onclick="copiarPrompt(event, 'aimme_mc.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <button onclick="copiarPrompt(event, 'aimme_mc.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📝</span>
         <div>
-          <h3 style="color: var(--vinho); margin: 0;">AIMME Dissertativo</h3>
+          <h3 style="color: var(--vinho);">AIMME Dissertativo</h3>
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Respostas elaboradas com validação</div>
+      <div style="margin-bottom: 15px;">Respostas elaboradas com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
-      <button onclick="copiarPrompt(event, 'aimme_diss.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <button onclick="copiarPrompt(event, 'aimme_diss.txt')">📋 COPIAR PROMPT</button>
     </div>
   </div>
 
-  <!-- Conteúdo ANCHOR com GUIA INTERNO -->
+  <!-- CONTEÚDO ANCHOR -->
   <div id="anchor" class="tab-content">
-    <!-- GUIA ANCHOR -->
     <div class="tab-guide">
-      <div class="tab-guide-title">
-        <span>⚓</span> GUIA ANCHOR - QUAL USAR?
-      </div>
+      <div class="tab-guide-title">⚓ GUIA ANCHOR - QUAL USAR?</div>
       <div class="tab-guide-content">
         <ul>
-          <li><strong>ANCHOR DEEP:</strong> Para material denso (tabelas complexas, múltiplas exceções, critérios detalhados). Comando: <span class="cmd">▶️ ANCORAR</span></li>
-          <li><strong>ANCHOR SPEED:</strong> Para revisão rápida (conteúdo direto, doses, listas). Comando: <span class="cmd">▶️ ACELERAR</span></li>
+          <li><strong>ANCHOR DEEP:</strong> Material denso, tabelas complexas. Comando: ▶️ ANCORAR</li>
+          <li><strong>ANCHOR SPEED:</strong> Revisão rápida, conteúdo direto. Comando: ▶️ ACELERAR</li>
         </ul>
-        <div class="tab-note" style="margin-top: 10px;">
-          💡 <strong>DICA:</strong> Use DEEP para fixar, SPEED para revisar. Depois de fazer DEEP uma vez, o SPEED será mais eficiente.
-        </div>
+        <div class="tab-note">💡 DICA: Deep para FIXAR, Speed para REVISAR.</div>
       </div>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">⚓⚓⚓</span>
         <div>
-          <h3 style="color: var(--vinho); margin: 0;">ANCHOR Deep</h3>
+          <h3 style="color: var(--vinho);">ANCHOR Deep</h3>
           <span class="version-badge">v2.7</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
+      <div style="margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ANCORAR</span></div>
-      <button onclick="copiarPrompt(event, 'anchor_deep.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <button onclick="copiarPrompt(event, 'anchor_deep.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">⚡⚡⚡</span>
         <div>
-          <h3 style="color: var(--vinho); margin: 0;">ANCHOR Speed</h3>
+          <h3 style="color: var(--vinho);">ANCHOR Speed</h3>
           <span class="version-badge">v1.4</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
+      <div style="margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ACELERAR</span></div>
-      <button onclick="copiarPrompt(event, 'anchor_speed.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <button onclick="copiarPrompt(event, 'anchor_speed.txt')">📋 COPIAR PROMPT</button>
     </div>
   </div>
 
-  <!-- Conteúdo NOTEBOOK LM com OBSERVAÇÕES -->
+  <!-- CONTEÚDO NOTEBOOK LM -->
   <div id="notebook" class="tab-content">
-    <!-- OBSERVAÇÕES NOTEBOOK LM -->
     <div class="tab-guide">
-      <div class="tab-guide-title">
-        <span>🛠️</span> SOBRE AS FERRAMENTAS NOTEBOOK LM
-      </div>
+      <div class="tab-guide-title">🛠️ SOBRE AS FERRAMENTAS</div>
       <div class="tab-guide-content">
         <ul>
-          <li><strong>Matérias Clínicas:</strong> Semiologia, Medicina Interna, Patologia Médica, Fisiopatologia</li>
-          <li><strong>Farmacologia/Toxicologia:</strong> Especializado para captar dosagens e demais estruturas</li>
+          <li><strong>Matérias Clínicas:</strong> Semiologia, Medicina Interna, Patologia, Fisiopatologia</li>
+          <li><strong>Farmacologia/Toxicologia:</strong> Especializado para captar dosagens</li>
           <li><strong>Não Clínicas:</strong> Saúde Pública, Medicina Legal, Ética</li>
         </ul>
-        <div class="tab-note">
-          <strong>⚠️ RECOMENDAÇÃO:</strong> EVITE ÁUDIOS LONGOS • GRAVE ÁUDIOS DE 30-45 MINUTOS • EXTRAIA FONTE POR FONTE NO LM = MAIOR DENSIDADE • EVITE MÚLTIPLAS FONTES DE TEXTO • EXTRAIA 1-2 FONTES DENSAS POR VEZ = MAIS CONTEÚDO
-        </div>
+        <div class="tab-note">⚠️ RECOMENDAÇÃO: Áudios de 30-45min. Extraia 1-2 fontes por vez.</div>
       </div>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🎤</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Clínica</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">ÁUDIO - Clínica</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Relatos com ênfase de professores</div>
-      <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Relatos com ênfase de professores</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📄</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Clínica</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">TEXTO - Clínica</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
-      <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Manobras, epônimos, condutas</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">💊</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Farmacologia</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">ÁUDIO - Farmacologia</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
-      <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📋</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Farmacologia</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">TEXTO - Farmacologia</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
-      <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🔊</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Não Clínicas</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">ÁUDIO - Não Clínicas</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
-      <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')">📋 COPIAR PROMPT</button>
     </div>
 
     <div class="feature-card">
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">📑</span>
-        <div>
-          <h3 style="color: var(--vinho); margin: 0;">TEXTO - Não Clínicas</h3>
-        </div>
+        <div><h3 style="color: var(--vinho);">TEXTO - Não Clínicas</h3></div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
-      <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
+      <div style="margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')">📋 COPIAR PROMPT</button>
     </div>
   </div>
 
-  <!-- Status -->
-  <div id="status" class="status" style="display: none;"></div>
+  <!-- STATUS E FOOTER -->
+  <div id="status" class="status"></div>
   
-  <!-- Footer -->
   <div class="footer">
     AIMME System • Pedro Nunes (UMAX - 8º semestre)<br>
     v2.0 • 11 Prompts • Criado por revolta contra leitura passiva
@@ -901,7 +833,7 @@ textarea { position: absolute; left: -9999px; }
 <textarea id="copyArea"></textarea>
 
 <script>
-// ===== VARIÁVEIS GLOBAIS =====
+// Variáveis do Timer
 let timerInterval;
 let seconds = 25 * 60;
 let running = false;
@@ -909,7 +841,7 @@ let pomodoroCount = 0;
 let sessionCount = 0;
 let completedToday = localStorage.getItem('pomodoroTotal') ? parseInt(localStorage.getItem('pomodoroTotal')) : 0;
 
-// ===== FUNÇÕES DO TIMER =====
+// Funções do Timer
 function updateTimerDisplay() {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -926,22 +858,16 @@ function startTimer() {
         } else {
             clearInterval(timerInterval);
             running = false;
-            
-            // Incrementar contadores
             pomodoroCount++;
             sessionCount++;
             completedToday++;
-            
             localStorage.setItem('pomodoroTotal', completedToday);
-            
             document.getElementById('pomodoroCount').textContent = `${pomodoroCount} 🍅`;
             document.getElementById('completedCount').textContent = completedToday;
             document.getElementById('sessionCount').textContent = sessionCount;
-            
             seconds = 25 * 60;
             updateTimerDisplay();
-            
-            alert("⏰ Pomodoro completo! 🎉 Faça uma pausa de 5 minutos.");
+            alert("⏰ Pomodoro completo! 🎉");
         }
     }, 1000);
 }
@@ -958,7 +884,7 @@ function resetTimer() {
     updateTimerDisplay();
 }
 
-// ===== FUNÇÕES DE CÓPIA =====
+// Função de cópia
 async function copiarPrompt(event, arquivo) {
     const botao = event.currentTarget;
     const originalHTML = botao.innerHTML;
@@ -996,7 +922,7 @@ async function copiarPrompt(event, arquivo) {
     }
 }
 
-// ===== FUNÇÕES DE ABA =====
+// Função de Abas
 function showTab(tabName) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -1004,18 +930,7 @@ function showTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// ===== FUNÇÃO DE TEMA =====
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const themeText = document.getElementById('themeText');
-    if (document.body.classList.contains('light-mode')) {
-        themeText.textContent = 'Modo Claro';
-    } else {
-        themeText.textContent = 'Modo Escuro';
-    }
-}
-
-// ===== INICIALIZAÇÃO =====
+// Inicialização
 window.onload = function() {
     updateTimerDisplay();
     document.getElementById('pomodoroCount').textContent = `${pomodoroCount} 🍅`;
