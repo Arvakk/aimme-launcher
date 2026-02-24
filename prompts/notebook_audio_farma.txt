@@ -1,0 +1,68 @@
+EXTRAÇÃO DE AULA/ÁUDIO - FARMACOLOGIA E TOXICOLOGIA
+
+Extraia TODO conteúdo farmacológico e toxicológico relevante de transcrição de aula médica.
+
+PRIORIZE (extraia TUDO):
+1. Fármacos mencionados (genérico + comercial + classe farmacológica)
+2. Mecanismos de ação (receptores, vias, alvos moleculares)
+3. Farmacocinética completa (ADME: absorção, distribuição, metabolismo, excreção)
+4. Doses terapêuticas, tóxicas e letais (adulto e pediátrico)
+5. Efeitos adversos (comuns e graves) + contraindicações
+6. Interações medicamentosas (fármaco-fármaco, fármaco-alimento)
+7. Intoxicações: manifestações clínicas, diagnóstico, tratamento
+8. Antídotos específicos (dose, via de administração, mecanismo)
+9. Conceitos que professor ENFATIZOU (repetiu ≥2x ou disse "isso cai")
+10. Macetes, regras mnemônicas para memorizar classes/efeitos
+11. Perguntas de alunos → erros comuns/armadilhas
+
+ELEMENTOS FARMACOLÓGICOS (capture SEMPRE):
+
+💊 Fármacos: nome genérico (comercial) + classe + mecanismo resumido
+   Ex: "Atropina = anticolinérgico = antagonista muscarínico"
+
+🔬 Mecanismos: receptor + ação (agonista/antagonista) + efeito final
+   Ex: "Propranolol = antagonista beta não-seletivo → ↓FC, ↓PA"
+
+⚙️ Farmacocinética: via + biodisponibilidade + meia-vida + metabolismo + excreção
+   Ex: "Digoxina: VO 70%, t½ 36h, excreção renal"
+
+💉 Doses: indicação + dose adulto/pediátrico + via + frequência
+   Ex: "Adrenalina anafilaxia: 0,3-0,5mg IM (adulto), 0,01mg/kg (criança)"
+
+☠️ Intoxicações: agente + dose tóxica + manifestações + tratamento + antídoto
+   Ex: "Paracetamol >150mg/kg → hepatotoxicidade 24-72h → N-acetilcisteína 140mg/kg VO"
+
+⚠️ Interações: fármaco A + fármaco B + mecanismo + resultado + conduta
+   Ex: "Varfarina + AINEs = ↑sangramento → evitar ou monitorar INR"
+
+ESTRUTURA DE SAÍDA:
+
+📦 BLOCOS FARMACOLÓGICOS:
+Fármacos por Classe: [todos com mecanismo, doses, indicações]
+Farmacocinética: [ADME completo]
+Farmacodinâmica: [mecanismos detalhados]
+Efeitos Adversos: [frequência + gravidade]
+Contraindicações: [absolutas e relativas]
+Interações: [mecanismo + conduta]
+
+☠️ TOXICOLOGIA:
+Intoxicações: [agente + dose tóxica + manifestações + tratamento]
+Antídotos: [qual agente + dose + via + mecanismo]
+Síndromes Tóxicas: [toxidrome completo]
+
+💡 DESTAQUES DO PROFESSOR:
+Ênfases verbais, macetes, "isso cai", erros clássicos, dicas práticas
+
+📊 DADOS QUANTITATIVOS:
+Doses exatas, meia-vida, biodisponibilidade %, ligação proteica %, DL50, níveis séricos
+
+🎯 CASOS CLÍNICOS:
+Cenário → fármaco/intoxicação → raciocínio → conduta → desfecho
+
+🔍 COMPARAÇÕES:
+Fármaco A vs B: diferenças em mecanismo, farmacocinética, indicações, efeitos adversos
+
+IGNORE: saudações, avisos administrativos, digressões não-técnicas
+
+⚠️ REGRA: Se em dúvida se incluir algo farmacológico/toxicológico, INCLUA.
+

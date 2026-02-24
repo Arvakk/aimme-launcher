@@ -1,0 +1,82 @@
+EXTRAÇÃO DE AULA/ÁUDIO - ADMINISTRAÇÃO E GESTÃO
+
+Extraia TODO conteúdo teórico relevante de transcrição de aula sobre Administração, Gestão, Filosofia, Ética Médica, Bioética, Saúde Coletiva e Políticas de Saúde.
+
+PRIORIZE (extraia TUDO):
+
+1. Conceitos e definições completas (com etimologia se mencionada)
+2. Autores e suas teorias/contribuições
+3. Frameworks, modelos e metodologias mencionados
+4. Processos administrativos (etapas, princípios)
+5. Métricas e indicadores (fórmulas, exemplos numéricos)
+6. Diferenciações conceituais (ex: eficácia vs eficiência)
+7. Exemplos práticos e analogias do professor
+8. Conceitos que professor ENFATIZOU (repetiu ≥2x ou disse "isso cai")
+9. Perguntas de alunos → confusões comuns/armadilhas
+
+ELEMENTOS CONCEITUAIS (capture SEMPRE):
+
+📖 Definições: nome + autor + definição completa + etimologia
+   Ex: "Administração (Brook Adams) = capacidade de coordenar energias sociais conflitantes"
+
+🎯 Teorias: nome + autor + foco + princípios + aplicação
+   Ex: "Teoria Científica (Taylor) = foco na tarefa, tempos e movimentos, seleção científica"
+
+⚙️ Processos: nome + etapas completas + objetivo de cada etapa
+   Ex: "Processo Administrativo (Fayol) = Prever, Organizar, Mandar, Coordenar, Controlar"
+
+📊 Métricas: nome + definição + fórmula + exemplo numérico
+   Ex: "Produtividade = produto/insumo → Exemplo: 10 ternos/tecido vs 11 ternos/tecido = +10%"
+
+🔍 Diferenciações: conceito A vs B + diferença-chave + armadilha comum
+   Ex: "Eficácia = atingir meta (não considera custo) vs Eficiência = atingir meta economizando"
+
+ESTRUTURA DE SAÍDA:
+
+📦 BLOCOS CONCEITUAIS:
+
+Conceitos Fundamentais: [todas as definições com autores]
+Teorias e Frameworks: [autor + foco + princípios + aplicação]
+Processos e Metodologias: [etapas completas]
+Métricas e Indicadores: [fórmulas + exemplos numéricos]
+Diferenciações: [comparações explícitas entre conceitos]
+Ambientes/Contextos: [macro/microambiente, fatores]
+
+💡 DESTAQUES DO PROFESSOR:
+
+- Ênfases verbais: [o que repetiu/destacou]
+- Exemplos práticos: [analogias, casos mencionados]
+- "Isso cai": [avisos explícitos]
+- Perguntas retóricas: [questões que fez à turma]
+
+📊 DADOS QUANTITATIVOS:
+
+- Exemplos numéricos de métricas
+- Porcentagens, incrementos, comparações
+- Modelos com elementos numerados (ex: 7S = 7 elementos)
+
+❓ ARMADILHAS E DÚVIDAS:
+
+- Perguntas dos alunos
+- Confusões conceituais comuns
+- Diferenciações enfatizadas
+
+🎯 EXEMPLOS PRÁTICOS:
+
+Exemplo [nº]:
+- Contexto: [situação apresentada]
+- Conceito aplicado: [qual teoria/métrica]
+- Resultado/Aprendizado: [conclusão do exemplo]
+
+📚 VOCABULÁRIO TÉCNICO:
+
+Termo: [nome]
+- Definição: [significado preciso]
+- Etimologia: [origem, se mencionada]
+- Contexto de uso: [quando aplicar]
+- Diferenciação: [vs termos similares]
+
+IGNORE: saudações, avisos administrativos, digressões não-técnicas
+
+⚠️ REGRA: Se em dúvida se incluir algo conceitual/teórico, INCLUA.
+

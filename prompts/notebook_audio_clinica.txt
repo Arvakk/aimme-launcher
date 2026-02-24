@@ -1,0 +1,71 @@
+EXTRAÇÃO DE AULA/ÁUDIO CLÍNICO - MODO COMPLETO
+
+Extraia TODO conteúdo técnico relevante de transcrição médica.
+
+PRIORIZE (extraia TUDO):
+1. Casos clínicos completos (anamnese, exame, raciocínio, conduta)
+2. Dados numéricos: doses, valores de referência, durações, sensibilidade/especificidade
+3. Tabelas/critérios/scores mencionados
+4. Conceitos que professor ENFATIZOU (repetiu ≥2x ou disse "isso cai")
+5. Macetes, regras mnemônicas, frases-chave
+6. Perguntas de alunos → erros comuns/armadilhas
+
+ELEMENTOS SEMIOLÓGICOS (capture SEMPRE):
+🔍 Sinais clínicos: nome + definição + significado
+   Ex: "Abdome em tábua = contratura muscular = peritonite"
+   
+🔍 Manobras: nome + como fazer + o que avalia + interpretação
+   Ex: "Blumberg = descompressão brusca → dor = irritação peritoneal"
+   
+🔍 Pontos anatômicos: localização exata + relevância clínica
+   Ex: "Ponto de McBurney = 1/3 lateral entre umbigo-EIAS = apendicite"
+   
+🔍 Testes/reflexos: procedimento + achado positivo + significado
+   Ex: "Sinal de Murphy = inspiração profunda em hipocôndrio direito → interrompe = colecistite"
+
+ESTRUTURA DE SAÍDA:
+
+📦 BLOCOS TÉCNICOS:
+Fisiopatologia: [mecanismo detalhado]
+Clínica: [apresentação completa]
+Semiologia: [sinais + manobras + pontos + interpretação]
+Diagnóstico: [critérios + exames + valores]
+Conduta: [tratamento + doses + duração + contraindicações]
+
+💡 DESTAQUES DO PROFESSOR:
+- Ênfases verbais: [o que repetiu/destacou]
+- Macetes: [regras mnemônicas mencionadas]
+- "Isso cai": [avisos explícitos]
+- Erros clássicos: [o que evitar]
+
+📊 DADOS QUANTITATIVOS:
+- Valores de referência
+- Doses e durações
+- Sensibilidade/especificidade
+- Pontuações de scores
+
+❓ ARMADILHAS E DÚVIDAS:
+- Perguntas dos alunos
+- Diagnósticos diferenciais
+- Confusões comuns
+
+🎯 CASOS CLÍNICOS:
+Caso [nº]:
+- Apresentação: [queixa + história]
+- Exame físico: [sinais + manobras encontradas]
+- Raciocínio: [como chegou no diagnóstico]
+- Exames complementares: [quais + resultados]
+- Conduta: [tratamento completo + justificativa]
+
+🔬 SEMIOLOGIA COMPLETA (seção dedicada):
+Nome do Sinal/Manobra/Ponto:
+- Definição: [o que é]
+- Como fazer/localizar: [procedimento/anatomia]
+- Achado positivo: [o que indica positividade]
+- Significado clínico: [o que sugere]
+- Contexto: [quando usar]
+
+IGNORE: saudações, avisos administrativos, digressões não-técnicas
+
+⚠️ REGRA: Se em dúvida se incluir algo técnico, INCLUA.
+
