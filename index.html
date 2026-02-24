@@ -3,29 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIMME Launcher v2.0 - Classic</title>
+<title>AIMME Launcher v2.0 - Elegant</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== PALETA VINHO ===== */
+/* ===== PALETA VINHO SOBRE FUNDO ESCURO ===== */
 :root {
   --vinho: #8B1E3F;
   --vinho-escuro: #6B162F;
-  --vinho-suave: #E8B4B8;
-  --branco: #FFFFFF;
-  --off-white: #F5F5F7;
-  --preto: #333333;
-  --cinza: #666666;
-  --cinza-claro: #CCCCCC;
+  --vinho-claro: #B84A6A;
+  --bg-escuro: #1a1a2e;
+  --bg-card: #16213e;
+  --texto-primario: #ffffff;
+  --texto-secundario: #cccccc;
+  --texto-cinza: #888888;
+  --borda: #0f3460;
+  
+  /* Contador de pomodoros */
+  --pomodoro-count: 0;
+}
+
+/* ===== MODO CLARO (quando ativado) ===== */
+body.light-mode {
+  --bg-escuro: #f0f2f5;
+  --bg-card: #ffffff;
+  --texto-primario: #333333;
+  --texto-secundario: #666666;
+  --texto-cinza: #999999;
+  --borda: #dddddd;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   padding: 20px;
-  background: var(--off-white);
-  color: var(--preto);
+  background: var(--bg-escuro);
+  color: var(--texto-primario);
   min-height: 100vh;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container { max-width: 600px; margin: 0 auto; }
@@ -41,19 +55,19 @@ h1 {
 
 .subtitle { 
   text-align: center; 
-  color: var(--cinza); 
+  color: var(--texto-cinza); 
   margin-bottom: 30px; 
   font-size: 14px; 
 }
 
-/* ===== BOTÃO MODO NOTURNO (adaptado) ===== */
+/* ===== BOTÃO MODO CLARO/ESCURO ===== */
 .theme-toggle {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
 }
 .theme-btn {
-  background: var(--branco);
+  background: transparent;
   border: 2px solid var(--vinho);
   color: var(--vinho);
   padding: 8px 16px;
@@ -67,7 +81,7 @@ h1 {
 }
 .theme-btn:hover {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
 }
 
 /* ===== ABAS DE NAVEGAÇÃO ===== */
@@ -75,17 +89,17 @@ h1 {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
-  background: var(--branco);
+  background: var(--bg-card);
   padding: 10px;
   border-radius: 50px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid var(--borda);
 }
 .tab {
   flex: 1;
   padding: 12px;
   border: none;
   background: transparent;
-  color: var(--cinza);
+  color: var(--texto-cinza);
   font-weight: bold;
   cursor: pointer;
   border-radius: 40px;
@@ -94,7 +108,7 @@ h1 {
 }
 .tab.active {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
 }
 .tab-content {
   display: none;
@@ -105,80 +119,110 @@ h1 {
 
 /* ===== CARDS ===== */
 .feature-card {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
-  border: 1px solid var(--cinza-claro);
+  border: 1px solid var(--borda);
   transition: all 0.3s ease;
 }
 .feature-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.15);
   border-color: var(--vinho);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.2);
 }
 
 /* ===== BADGES DE VERSÃO ===== */
 .version-badge {
-  background: var(--vinho-suave);
-  color: var(--vinho-escuro);
+  background: rgba(139, 30, 63, 0.2);
+  color: var(--vinho);
   border-radius: 20px;
   padding: 4px 12px;
   font-size: 11px;
   font-weight: 600;
   display: inline-block;
+  border: 1px solid var(--vinho);
 }
 
 /* ===== COMANDOS TAGS ===== */
 .cmd-tag {
-  background: var(--off-white);
+  background: rgba(139, 30, 63, 0.1);
   color: var(--vinho);
   padding: 4px 10px;
   border-radius: 20px;
   font-family: monospace;
   font-size: 12px;
-  font-weight: 600;
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 5px;
   border: 1px solid var(--vinho);
 }
 
-/* ===== TIMER POMODORO ===== */
+/* ===== TIMER POMODORO COM CONTADOR ===== */
 .timer-container {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
-  text-align: center;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
+}
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  color: var(--vinho);
+  font-size: 14px;
+}
+.timer-counter {
+  background: var(--vinho);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
 }
 .timer-display {
   font-size: 48px;
   font-weight: bold;
   color: var(--vinho);
-  margin: 10px 0;
+  text-align: center;
+  margin: 15px 0;
+  font-family: monospace;
 }
 .timer-controls {
   display: flex;
   gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .timer-btn {
-  background: var(--branco);
+  background: transparent;
   border: 2px solid var(--vinho);
   color: var(--vinho);
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s;
+  min-width: 80px;
 }
 .timer-btn:hover {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
+}
+.timer-stats {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--borda);
+  display: flex;
+  justify-content: space-around;
+  color: var(--texto-secundario);
+  font-size: 13px;
+}
+.timer-stats span {
+  color: var(--vinho);
+  font-weight: bold;
+  font-size: 16px;
 }
 
 /* ===== BOTÕES PRINCIPAIS ===== */
@@ -190,8 +234,8 @@ button {
   cursor: pointer;
   border: 2px solid var(--vinho);
   border-radius: 12px;
-  background: var(--branco);
-  color: var(--preto);
+  background: var(--bg-card);
+  color: var(--texto-primario);
   transition: all 0.3s ease;
   text-align: left;
   display: flex;
@@ -202,12 +246,12 @@ button {
 }
 button:hover { 
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.2);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.3);
 }
 button:hover .version {
-  color: var(--branco) !important;
+  color: white !important;
 }
 button:active { transform: translateY(0); }
 button::after {
@@ -216,7 +260,7 @@ button::after {
   bottom: 5px;
   right: 10px;
   font-size: 8px;
-  color: var(--cinza);
+  color: var(--texto-cinza);
   font-weight: normal;
   letter-spacing: 0.5px;
 }
@@ -226,11 +270,11 @@ button:hover::after {
 .copied { 
   background: #28a745 !important; 
   border-color: #28a745 !important; 
-  color: var(--branco) !important;
+  color: white !important;
 }
 .copied::after { 
   content: "✅ COPIADO!"; 
-  color: var(--branco) !important; 
+  color: white !important; 
 }
 .emoji { font-size: 24px; }
 .text { flex: 1; }
@@ -245,7 +289,7 @@ button:hover::after {
 .footer { 
   text-align: center; 
   margin-top: 40px; 
-  color: var(--cinza); 
+  color: var(--texto-cinza); 
   font-size: 12px; 
 }
 
@@ -253,17 +297,16 @@ button:hover::after {
   text-align: center;
   margin-top: 20px;
   padding: 15px;
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 8px;
   border-left: 4px solid var(--vinho);
-  color: var(--preto);
+  color: var(--texto-primario);
   font-size: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 /* ===== INSTRUCTION BANNER ===== */
 .instruction-banner {
-  background: var(--branco);
+  background: var(--bg-card);
   border: 2px solid var(--vinho);
   border-radius: 12px;
   padding: 15px;
@@ -272,12 +315,11 @@ button:hover::after {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .instruction-banner-icon {
   font-size: 32px;
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -292,12 +334,12 @@ button:hover::after {
   font-size: 18px;
 }
 .instruction-banner-text p { 
-  color: var(--preto); 
+  color: var(--texto-secundario); 
   font-size: 14px; 
 }
 .instruction-banner-highlight {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   padding: 5px 15px;
   border-radius: 25px;
   font-weight: bold;
@@ -307,12 +349,11 @@ button:hover::after {
 
 /* ===== RECOMENDAÇÕES IA ===== */
 .recommendation-box {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .recommendation-title {
   color: var(--vinho);
@@ -329,21 +370,21 @@ button:hover::after {
   gap: 15px;
 }
 .recommendation-card {
-  background: var(--off-white);
+  background: rgba(255,255,255,0.05);
   border-radius: 12px;
   padding: 15px;
   text-align: center;
-  border: 1px solid var(--cinza-claro);
+  border: 1px solid var(--borda);
 }
 .recommendation-card .ai-name {
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0 5px;
-  color: var(--preto);
+  color: var(--texto-primario);
 }
 .recommendation-card .badge {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;
@@ -352,7 +393,7 @@ button:hover::after {
   margin-bottom: 10px;
 }
 .recommendation-card .stats { 
-  color: var(--cinza); 
+  color: var(--texto-secundario); 
   font-size: 13px; 
   margin: 10px 0; 
 }
@@ -362,7 +403,7 @@ button:hover::after {
 
 /* ===== INFO BOX ===== */
 .info-box {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 20px;
   margin-top: 20px;
@@ -377,14 +418,14 @@ button:hover::after {
   letter-spacing: 0.5px;
 }
 .info-list {
-  color: var(--preto);
+  color: var(--texto-secundario);
   list-style-type: none;
   padding-left: 0;
   margin: 15px 0;
 }
 .info-list li {
   margin-bottom: 10px;
-  color: var(--preto);
+  color: var(--texto-secundario);
   font-weight: 500;
 }
 .info-list li strong { 
@@ -397,26 +438,25 @@ button:hover::after {
   font-size: 14px;
   margin-top: 15px;
   padding: 12px;
-  background: var(--off-white);
+  background: rgba(139, 30, 63, 0.1);
   border-left: 4px solid var(--vinho);
   border-radius: 4px;
   line-height: 1.5;
 }
 .info-note strong {
-  color: var(--preto);
-  background: rgba(139, 30, 63, 0.1);
+  color: var(--texto-primario);
+  background: rgba(139, 30, 63, 0.2);
   padding: 2px 6px;
   border-radius: 4px;
 }
 
 /* ===== FLUXOGRAMA MINIMALISTA ===== */
 .flow-container {
-  background: var(--branco);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
-  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.08);
 }
 .flow-title {
   display: flex;
@@ -435,8 +475,8 @@ button:hover::after {
 }
 .flow-step {
   flex: 1;
-  min-width: 180px;
-  background: var(--off-white);
+  min-width: 160px;
+  background: rgba(255,255,255,0.03);
   padding: 15px;
   border-radius: 12px;
   border-left: 4px solid var(--vinho);
@@ -449,7 +489,7 @@ button:hover::after {
 }
 .flow-step-number {
   background: var(--vinho);
-  color: var(--branco);
+  color: white;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -465,18 +505,17 @@ button:hover::after {
   font-size: 14px;
 }
 .flow-step-content {
-  color: var(--preto);
+  color: var(--texto-secundario);
   font-size: 13px;
   line-height: 1.8;
 }
 .flow-step-content .cmd {
-  background: var(--branco);
+  background: rgba(139, 30, 63, 0.2);
   color: var(--vinho);
   padding: 2px 6px;
   border-radius: 4px;
   font-family: monospace;
   font-size: 12px;
-  border: 1px solid var(--vinho);
 }
 .flow-arrow {
   display: flex;
@@ -488,9 +527,9 @@ button:hover::after {
 .flow-dica {
   margin-top: 20px;
   padding: 12px;
-  background: var(--off-white);
+  background: rgba(139, 30, 63, 0.1);
   border-radius: 8px;
-  color: var(--preto);
+  color: var(--texto-secundario);
   font-size: 13px;
   text-align: center;
   border: 1px dashed var(--vinho);
@@ -503,7 +542,7 @@ button:hover::after {
   padding: 12px;
   background: var(--vinho);
   border-radius: 8px;
-  color: var(--branco);
+  color: white;
   font-size: 12px;
   font-family: monospace;
 }
@@ -520,15 +559,17 @@ textarea { position: absolute; left: -9999px; }
   .tabs { flex-wrap: wrap; }
   .flow-grid { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
+  .timer-controls { flex-direction: column; }
+  .timer-btn { width: 100%; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <!-- Botão Modo Noturno/Claro -->
+  <!-- Botão Modo Claro/Escuro (AGORA FUNCIONA!) -->
   <div class="theme-toggle">
     <button class="theme-btn" onclick="toggleTheme()">
-      <span>🌓</span> Alternar Modo
+      <span>🌓</span> <span id="themeText">Modo Escuro</span>
     </button>
   </div>
 
@@ -545,14 +586,21 @@ textarea { position: absolute; left: -9999px; }
     <div class="instruction-banner-highlight">📋 CLICAR = COPIAR</div>
   </div>
 
-  <!-- Timer Pomodoro -->
+  <!-- Timer Pomodoro com Contador -->
   <div class="timer-container">
-    <div style="font-size: 14px; color: var(--vinho);">⏱️ POMODORO TIMER</div>
+    <div class="timer-header">
+      <span>⏱️ POMODORO TIMER</span>
+      <span class="timer-counter" id="pomodoroCount">0 🍅</span>
+    </div>
     <div class="timer-display" id="timer">25:00</div>
     <div class="timer-controls">
       <button class="timer-btn" onclick="startTimer()">▶️ Iniciar</button>
       <button class="timer-btn" onclick="pauseTimer()">⏸️ Pausar</button>
       <button class="timer-btn" onclick="resetTimer()">🔄 Reset</button>
+    </div>
+    <div class="timer-stats">
+      <div>Completados: <span id="completedCount">0</span></div>
+      <div>Sessão: <span id="sessionCount">0</span></div>
     </div>
   </div>
 
@@ -581,7 +629,7 @@ textarea { position: absolute; left: -9999px; }
     </div>
   </div>
 
-  <!-- ===== FLUXOGRAMA MINIMALISTA ===== -->
+  <!-- FLUXOGRAMA MINIMALISTA -->
   <div class="flow-container">
     <div class="flow-title">
       <span>📋</span> FLUXO DE ESTUDO RESUMIDO
@@ -641,7 +689,7 @@ textarea { position: absolute; left: -9999px; }
 
     <!-- Exemplo -->
     <div class="flow-exemplo">
-      <span style="color: var(--branco);">📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
+      <span>📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
     </div>
   </div>
 
@@ -662,7 +710,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.0</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
       <div style="margin-bottom: 15px;">
         <span class="cmd-tag">▶️ INICIAR</span>
         <span class="cmd-tag">EXPORTAR BLOCO</span>
@@ -679,7 +727,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Flashcards objetivos com validação</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Flashcards objetivos com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_mc.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -692,7 +740,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Respostas elaboradas com validação</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Respostas elaboradas com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_diss.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -708,7 +756,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v2.7</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ANCORAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_deep.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -721,7 +769,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v1.4</span>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ACELERAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_speed.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -736,7 +784,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Clínica</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Relatos com ênfase de professores</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Relatos com ênfase de professores</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -747,7 +795,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Clínica</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -758,7 +806,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -769,7 +817,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -780,7 +828,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -791,7 +839,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
@@ -809,7 +857,68 @@ textarea { position: absolute; left: -9999px; }
 <textarea id="copyArea"></textarea>
 
 <script>
-// Função de cópia
+// ===== VARIÁVEIS GLOBAIS =====
+let timerInterval;
+let seconds = 25 * 60;
+let running = false;
+let pomodoroCount = 0;
+let sessionCount = 0;
+let completedToday = localStorage.getItem('pomodoroTotal') ? parseInt(localStorage.getItem('pomodoroTotal')) : 0;
+
+// ===== FUNÇÕES DO TIMER =====
+function updateTimerDisplay() {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function startTimer() {
+    if (running) return;
+    running = true;
+    timerInterval = setInterval(() => {
+        if (seconds > 0) {
+            seconds--;
+            updateTimerDisplay();
+        } else {
+            // Pomodoro completo!
+            clearInterval(timerInterval);
+            running = false;
+            
+            // Incrementar contadores
+            pomodoroCount++;
+            sessionCount++;
+            completedToday++;
+            
+            // Salvar no localStorage
+            localStorage.setItem('pomodoroTotal', completedToday);
+            
+            // Atualizar display
+            document.getElementById('pomodoroCount').textContent = `${pomodoroCount} 🍅`;
+            document.getElementById('completedCount').textContent = completedToday;
+            document.getElementById('sessionCount').textContent = sessionCount;
+            
+            // Reset para próximo pomodoro
+            seconds = 25 * 60;
+            updateTimerDisplay();
+            
+            alert("⏰ Pomodoro completo! 🎉 Faça uma pausa de 5 minutos.");
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    running = false;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    running = false;
+    seconds = 25 * 60;
+    updateTimerDisplay();
+}
+
+// ===== FUNÇÕES DE CÓPIA =====
 async function copiarPrompt(event, arquivo) {
     const botao = event.currentTarget;
     const originalHTML = botao.innerHTML;
@@ -837,7 +946,7 @@ async function copiarPrompt(event, arquivo) {
         setTimeout(() => { status.style.display = 'none'; }, 3000);
         
     } catch (erro) {
-        alert(`Erro: arquivo não encontrado`);
+        alert(`Erro: arquivo não encontrado na pasta 'prompts'`);
         botao.innerHTML = "❌ ERRO";
         botao.style.backgroundColor = "#dc3545";
         setTimeout(() => {
@@ -847,7 +956,7 @@ async function copiarPrompt(event, arquivo) {
     }
 }
 
-// Abas
+// ===== FUNÇÕES DE ABA =====
 function showTab(tabName) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -855,48 +964,24 @@ function showTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// Timer
-let timerInterval;
-let seconds = 25 * 60;
-let running = false;
-
-function updateTimerDisplay() {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-}
-
-function startTimer() {
-    if (running) return;
-    running = true;
-    timerInterval = setInterval(() => {
-        if (seconds > 0) {
-            seconds--;
-            updateTimerDisplay();
-        } else {
-            clearInterval(timerInterval);
-            running = false;
-            alert("⏰ Tempo encerrado!");
-        }
-    }, 1000);
-}
-
-function pauseTimer() {
-    clearInterval(timerInterval);
-    running = false;
-}
-
-function resetTimer() {
-    clearInterval(timerInterval);
-    running = false;
-    seconds = 25 * 60;
-    updateTimerDisplay();
-}
-
-// Tema
+// ===== FUNÇÃO DE TEMA (AGORA FUNCIONA!) =====
 function toggleTheme() {
-    document.body.classList.toggle('light-theme');
+    document.body.classList.toggle('light-mode');
+    const themeText = document.getElementById('themeText');
+    if (document.body.classList.contains('light-mode')) {
+        themeText.textContent = 'Modo Claro';
+    } else {
+        themeText.textContent = 'Modo Escuro';
+    }
 }
+
+// ===== INICIALIZAÇÃO =====
+window.onload = function() {
+    updateTimerDisplay();
+    document.getElementById('pomodoroCount').textContent = `${pomodoroCount} 🍅`;
+    document.getElementById('completedCount').textContent = completedToday;
+    document.getElementById('sessionCount').textContent = sessionCount;
+};
 </script>
 </body>
 </html>
