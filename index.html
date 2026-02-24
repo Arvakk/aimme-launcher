@@ -7,37 +7,37 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== PALETA VINHO SOBRE FUNDO ESCURO ===== */
+/* ===== PALETA VINHO ===== */
 :root {
   --vinho: #8B1E3F;
   --vinho-escuro: #6B162F;
-  --vinho-claro: #B84A6A;
+  --vinho-suave: #E8B4B8;
+  --branco: #FFFFFF;
+  --off-white: #F5F5F7;
+  --preto: #333333;
+  --cinza: #666666;
+  --cinza-claro: #CCCCCC;
   --bg-escuro: #1a1a2e;
   --bg-card: #16213e;
-  --texto-primario: #ffffff;
-  --texto-secundario: #cccccc;
-  --texto-cinza: #888888;
-  --borda: #0f3460;
-  
-  /* Contador de pomodoros */
-  --pomodoro-count: 0;
 }
 
-/* ===== MODO CLARO (quando ativado) ===== */
+/* ===== MODO CLARO (AJUSTADO - MAIS ESCURECIDO) ===== */
 body.light-mode {
-  --bg-escuro: #f0f2f5;
-  --bg-card: #ffffff;
-  --texto-primario: #333333;
-  --texto-secundario: #666666;
-  --texto-cinza: #999999;
-  --borda: #dddddd;
+  --bg-escuro: #e8eaf0;
+  --bg-card: #d0d4e0;
+  --branco: #f0f2f5;
+  --off-white: #e0e4ec;
+  --preto: #222222;
+  --cinza: #444444;
+  --texto-primario: #222222;
+  --texto-secundario: #444444;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   padding: 20px;
   background: var(--bg-escuro);
-  color: var(--texto-primario);
+  color: var(--preto);
   min-height: 100vh;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -55,7 +55,7 @@ h1 {
 
 .subtitle { 
   text-align: center; 
-  color: var(--texto-cinza); 
+  color: var(--cinza); 
   margin-bottom: 30px; 
   font-size: 14px; 
 }
@@ -67,7 +67,7 @@ h1 {
   margin-bottom: 15px;
 }
 .theme-btn {
-  background: transparent;
+  background: var(--branco);
   border: 2px solid var(--vinho);
   color: var(--vinho);
   padding: 8px 16px;
@@ -81,7 +81,7 @@ h1 {
 }
 .theme-btn:hover {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
 }
 
 /* ===== ABAS DE NAVEGAÇÃO ===== */
@@ -89,17 +89,17 @@ h1 {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
-  background: var(--bg-card);
+  background: var(--branco);
   padding: 10px;
   border-radius: 50px;
-  border: 1px solid var(--borda);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .tab {
   flex: 1;
   padding: 12px;
   border: none;
   background: transparent;
-  color: var(--texto-cinza);
+  color: var(--cinza);
   font-weight: bold;
   cursor: pointer;
   border-radius: 40px;
@@ -108,7 +108,7 @@ h1 {
 }
 .tab.active {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
 }
 .tab-content {
   display: none;
@@ -119,74 +119,70 @@ h1 {
 
 /* ===== CARDS ===== */
 .feature-card {
-  background: var(--bg-card);
+  background: var(--branco);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid var(--borda);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
+  border: 1px solid var(--cinza-claro);
   transition: all 0.3s ease;
 }
 .feature-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.25);
   border-color: var(--vinho);
-  box-shadow: 0 8px 20px rgba(139, 30, 63, 0.2);
 }
 
 /* ===== BADGES DE VERSÃO ===== */
 .version-badge {
-  background: rgba(139, 30, 63, 0.2);
-  color: var(--vinho);
+  background: var(--vinho-suave);
+  color: var(--vinho-escuro);
   border-radius: 20px;
   padding: 4px 12px;
   font-size: 11px;
   font-weight: 600;
   display: inline-block;
-  border: 1px solid var(--vinho);
 }
 
 /* ===== COMANDOS TAGS ===== */
 .cmd-tag {
-  background: rgba(139, 30, 63, 0.1);
+  background: var(--off-white);
   color: var(--vinho);
   padding: 4px 10px;
   border-radius: 20px;
   font-family: monospace;
   font-size: 12px;
+  font-weight: 600;
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 5px;
   border: 1px solid var(--vinho);
 }
 
-/* ===== TIMER POMODORO COM CONTADOR ===== */
+/* ===== TIMER POMODORO - CORREÇÃO DOS BOTÕES ===== */
 .timer-container {
-  background: var(--bg-card);
+  background: var(--branco);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
+  text-align: center;
   border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
 .timer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: var(--vinho);
   font-size: 14px;
-}
-.timer-counter {
-  background: var(--vinho);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
   font-weight: bold;
 }
 .timer-display {
   font-size: 48px;
   font-weight: bold;
   color: var(--vinho);
-  text-align: center;
-  margin: 15px 0;
+  margin: 10px 0;
   font-family: monospace;
 }
 .timer-controls {
@@ -194,29 +190,34 @@ h1 {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 15px 0;
 }
 .timer-btn {
-  background: transparent;
+  background: var(--branco);
   border: 2px solid var(--vinho);
   color: var(--vinho);
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s;
-  min-width: 80px;
+  flex: 1 1 auto;
+  min-width: 90px;
+  max-width: 120px;
+  white-space: nowrap;
+  font-size: 14px;
 }
 .timer-btn:hover {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
 }
 .timer-stats {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid var(--borda);
   display: flex;
   justify-content: space-around;
-  color: var(--texto-secundario);
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--cinza-claro);
+  color: var(--cinza);
   font-size: 13px;
 }
 .timer-stats span {
@@ -234,8 +235,8 @@ button {
   cursor: pointer;
   border: 2px solid var(--vinho);
   border-radius: 12px;
-  background: var(--bg-card);
-  color: var(--texto-primario);
+  background: var(--branco);
+  color: var(--preto);
   transition: all 0.3s ease;
   text-align: left;
   display: flex;
@@ -246,12 +247,12 @@ button {
 }
 button:hover { 
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(139, 30, 63, 0.3);
 }
 button:hover .version {
-  color: white !important;
+  color: var(--branco) !important;
 }
 button:active { transform: translateY(0); }
 button::after {
@@ -260,7 +261,7 @@ button::after {
   bottom: 5px;
   right: 10px;
   font-size: 8px;
-  color: var(--texto-cinza);
+  color: var(--cinza);
   font-weight: normal;
   letter-spacing: 0.5px;
 }
@@ -270,11 +271,11 @@ button:hover::after {
 .copied { 
   background: #28a745 !important; 
   border-color: #28a745 !important; 
-  color: white !important;
+  color: var(--branco) !important;
 }
 .copied::after { 
   content: "✅ COPIADO!"; 
-  color: white !important; 
+  color: var(--branco) !important; 
 }
 .emoji { font-size: 24px; }
 .text { flex: 1; }
@@ -289,7 +290,7 @@ button:hover::after {
 .footer { 
   text-align: center; 
   margin-top: 40px; 
-  color: var(--texto-cinza); 
+  color: var(--cinza); 
   font-size: 12px; 
 }
 
@@ -297,16 +298,17 @@ button:hover::after {
   text-align: center;
   margin-top: 20px;
   padding: 15px;
-  background: var(--bg-card);
+  background: var(--branco);
   border-radius: 8px;
   border-left: 4px solid var(--vinho);
-  color: var(--texto-primario);
+  color: var(--preto);
   font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* ===== INSTRUCTION BANNER ===== */
 .instruction-banner {
-  background: var(--bg-card);
+  background: var(--branco);
   border: 2px solid var(--vinho);
   border-radius: 12px;
   padding: 15px;
@@ -315,11 +317,12 @@ button:hover::after {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
 .instruction-banner-icon {
   font-size: 32px;
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -334,12 +337,12 @@ button:hover::after {
   font-size: 18px;
 }
 .instruction-banner-text p { 
-  color: var(--texto-secundario); 
+  color: var(--preto); 
   font-size: 14px; 
 }
 .instruction-banner-highlight {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
   padding: 5px 15px;
   border-radius: 25px;
   font-weight: bold;
@@ -349,11 +352,12 @@ button:hover::after {
 
 /* ===== RECOMENDAÇÕES IA ===== */
 .recommendation-box {
-  background: var(--bg-card);
+  background: var(--branco);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
 .recommendation-title {
   color: var(--vinho);
@@ -370,21 +374,21 @@ button:hover::after {
   gap: 15px;
 }
 .recommendation-card {
-  background: rgba(255,255,255,0.05);
+  background: var(--off-white);
   border-radius: 12px;
   padding: 15px;
   text-align: center;
-  border: 1px solid var(--borda);
+  border: 1px solid var(--cinza-claro);
 }
 .recommendation-card .ai-name {
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0 5px;
-  color: var(--texto-primario);
+  color: var(--preto);
 }
 .recommendation-card .badge {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;
@@ -393,7 +397,7 @@ button:hover::after {
   margin-bottom: 10px;
 }
 .recommendation-card .stats { 
-  color: var(--texto-secundario); 
+  color: var(--cinza); 
   font-size: 13px; 
   margin: 10px 0; 
 }
@@ -401,62 +405,14 @@ button:hover::after {
   color: var(--vinho); 
 }
 
-/* ===== INFO BOX ===== */
-.info-box {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
-  border: 2px solid var(--vinho);
-}
-.info-title {
-  color: var(--vinho) !important;
-  font-weight: bold;
-  margin-bottom: 15px;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.info-list {
-  color: var(--texto-secundario);
-  list-style-type: none;
-  padding-left: 0;
-  margin: 15px 0;
-}
-.info-list li {
-  margin-bottom: 10px;
-  color: var(--texto-secundario);
-  font-weight: 500;
-}
-.info-list li strong { 
-  color: var(--vinho); 
-  font-weight: bold; 
-}
-.info-note {
-  color: var(--vinho);
-  font-weight: bold;
-  font-size: 14px;
-  margin-top: 15px;
-  padding: 12px;
-  background: rgba(139, 30, 63, 0.1);
-  border-left: 4px solid var(--vinho);
-  border-radius: 4px;
-  line-height: 1.5;
-}
-.info-note strong {
-  color: var(--texto-primario);
-  background: rgba(139, 30, 63, 0.2);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
 /* ===== FLUXOGRAMA MINIMALISTA ===== */
 .flow-container {
-  background: var(--bg-card);
+  background: var(--branco);
   border-radius: 16px;
   padding: 20px;
   margin: 20px 0;
   border: 2px solid var(--vinho);
+  box-shadow: 0 4px 12px rgba(139, 30, 63, 0.15);
 }
 .flow-title {
   display: flex;
@@ -476,7 +432,7 @@ button:hover::after {
 .flow-step {
   flex: 1;
   min-width: 160px;
-  background: rgba(255,255,255,0.03);
+  background: var(--off-white);
   padding: 15px;
   border-radius: 12px;
   border-left: 4px solid var(--vinho);
@@ -489,7 +445,7 @@ button:hover::after {
 }
 .flow-step-number {
   background: var(--vinho);
-  color: white;
+  color: var(--branco);
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -505,17 +461,18 @@ button:hover::after {
   font-size: 14px;
 }
 .flow-step-content {
-  color: var(--texto-secundario);
+  color: var(--preto);
   font-size: 13px;
   line-height: 1.8;
 }
 .flow-step-content .cmd {
-  background: rgba(139, 30, 63, 0.2);
+  background: var(--branco);
   color: var(--vinho);
   padding: 2px 6px;
   border-radius: 4px;
   font-family: monospace;
   font-size: 12px;
+  border: 1px solid var(--vinho);
 }
 .flow-arrow {
   display: flex;
@@ -527,9 +484,9 @@ button:hover::after {
 .flow-dica {
   margin-top: 20px;
   padding: 12px;
-  background: rgba(139, 30, 63, 0.1);
+  background: var(--off-white);
   border-radius: 8px;
-  color: var(--texto-secundario);
+  color: var(--preto);
   font-size: 13px;
   text-align: center;
   border: 1px dashed var(--vinho);
@@ -542,9 +499,63 @@ button:hover::after {
   padding: 12px;
   background: var(--vinho);
   border-radius: 8px;
-  color: white;
+  color: var(--branco);
   font-size: 12px;
   font-family: monospace;
+}
+
+/* ===== GUIAS INTERNOS DAS ABAS ===== */
+.tab-guide {
+  background: var(--off-white);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--vinho);
+}
+.tab-guide-title {
+  color: var(--vinho);
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tab-guide-content {
+  color: var(--preto);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.tab-guide-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.tab-guide-content li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+.tab-guide-content li:before {
+  content: "•";
+  color: var(--vinho);
+  font-weight: bold;
+  position: absolute;
+  left: 5px;
+}
+.tab-guide-content strong {
+  color: var(--vinho);
+}
+.tab-note {
+  background: rgba(139, 30, 63, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 15px;
+  border-left: 4px solid var(--vinho);
+  color: var(--preto);
+  font-size: 13px;
+}
+.tab-note strong {
+  color: var(--vinho);
 }
 
 textarea { position: absolute; left: -9999px; }
@@ -559,14 +570,14 @@ textarea { position: absolute; left: -9999px; }
   .tabs { flex-wrap: wrap; }
   .flow-grid { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
-  .timer-controls { flex-direction: column; }
-  .timer-btn { width: 100%; }
+  .timer-controls { flex-direction: row; }
+  .timer-btn { max-width: none; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <!-- Botão Modo Claro/Escuro (AGORA FUNCIONA!) -->
+  <!-- Botão Modo Claro/Escuro -->
   <div class="theme-toggle">
     <button class="theme-btn" onclick="toggleTheme()">
       <span>🌓</span> <span id="themeText">Modo Escuro</span>
@@ -689,7 +700,7 @@ textarea { position: absolute; left: -9999px; }
 
     <!-- Exemplo -->
     <div class="flow-exemplo">
-      <span>📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
+      <span style="color: var(--branco);">📋 EXEMPLO ASMA:</span> PDF → ▶️ INICIAR → EXPORTAR BLOCO 2 → NOVO chat + Bloco 2 + prompt MC → ▶️ INICIAR
     </div>
   </div>
 
@@ -710,7 +721,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.0</span>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Organiza estrutura em blocos lógicos (USE PRIMEIRO)</div>
       <div style="margin-bottom: 15px;">
         <span class="cmd-tag">▶️ INICIAR</span>
         <span class="cmd-tag">EXPORTAR BLOCO</span>
@@ -727,7 +738,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Flashcards objetivos com validação</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Flashcards objetivos com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_mc.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -740,14 +751,30 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v3.2</span>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Respostas elaboradas com validação</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Respostas elaboradas com validação</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ INICIAR</span></div>
       <button onclick="copiarPrompt(event, 'aimme_diss.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
 
-  <!-- Conteúdo ANCHOR -->
+  <!-- Conteúdo ANCHOR com GUIA INTERNO -->
   <div id="anchor" class="tab-content">
+    <!-- GUIA ANCHOR -->
+    <div class="tab-guide">
+      <div class="tab-guide-title">
+        <span>⚓</span> GUIA ANCHOR - QUAL USAR?
+      </div>
+      <div class="tab-guide-content">
+        <ul>
+          <li><strong>ANCHOR DEEP:</strong> Para material denso (tabelas complexas, múltiplas exceções, critérios detalhados). Comando: <span class="cmd">▶️ ANCORAR</span></li>
+          <li><strong>ANCHOR SPEED:</strong> Para revisão rápida (conteúdo direto, doses, listas). Comando: <span class="cmd">▶️ ACELERAR</span></li>
+        </ul>
+        <div class="tab-note" style="margin-top: 10px;">
+          💡 <strong>DICA:</strong> Use DEEP para fixar, SPEED para revisar. Depois de fazer DEEP uma vez, o SPEED será mais eficiente.
+        </div>
+      </div>
+    </div>
+
     <div class="feature-card">
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">⚓⚓⚓</span>
@@ -756,7 +783,7 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v2.7</span>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Tabelas complexas, múltiplas exceções</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ANCORAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_deep.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
@@ -769,14 +796,31 @@ textarea { position: absolute; left: -9999px; }
           <span class="version-badge">v1.4</span>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Revisão rápida, conteúdo direto</div>
       <div style="margin-bottom: 15px;"><span class="cmd-tag">▶️ ACELERAR</span></div>
       <button onclick="copiarPrompt(event, 'anchor_speed.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
 
-  <!-- Conteúdo NOTEBOOK LM -->
+  <!-- Conteúdo NOTEBOOK LM com OBSERVAÇÕES -->
   <div id="notebook" class="tab-content">
+    <!-- OBSERVAÇÕES NOTEBOOK LM -->
+    <div class="tab-guide">
+      <div class="tab-guide-title">
+        <span>🛠️</span> SOBRE AS FERRAMENTAS NOTEBOOK LM
+      </div>
+      <div class="tab-guide-content">
+        <ul>
+          <li><strong>Matérias Clínicas:</strong> Semiologia, Medicina Interna, Patologia Médica, Fisiopatologia</li>
+          <li><strong>Farmacologia/Toxicologia:</strong> Especializado para captar dosagens e demais estruturas</li>
+          <li><strong>Não Clínicas:</strong> Saúde Pública, Medicina Legal, Ética</li>
+        </ul>
+        <div class="tab-note">
+          <strong>⚠️ RECOMENDAÇÃO:</strong> EVITE ÁUDIOS LONGOS • GRAVE ÁUDIOS DE 30-45 MINUTOS • EXTRAIA FONTE POR FONTE NO LM = MAIOR DENSIDADE • EVITE MÚLTIPLAS FONTES DE TEXTO • EXTRAIA 1-2 FONTES DENSAS POR VEZ = MAIS CONTEÚDO
+        </div>
+      </div>
+    </div>
+
     <div class="feature-card">
       <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <span style="font-size: 32px;">🎤</span>
@@ -784,7 +828,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Clínica</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Relatos com ênfase de professores</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Relatos com ênfase de professores</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -795,7 +839,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Clínica</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Manobras, epônimos, condutas</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_clinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -806,7 +850,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -817,7 +861,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Farmacologia</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Foco em DOSAGENS</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Foco em DOSAGENS</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_farma.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -828,7 +872,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">ÁUDIO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_audio_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
 
@@ -839,7 +883,7 @@ textarea { position: absolute; left: -9999px; }
           <h3 style="color: var(--vinho); margin: 0;">TEXTO - Não Clínicas</h3>
         </div>
       </div>
-      <div style="color: var(--texto-secundario); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
+      <div style="color: var(--preto); margin-bottom: 15px;">Saúde Pública, Medicina Legal, Ética</div>
       <button onclick="copiarPrompt(event, 'notebook_texto_naoclinica.txt')" style="width: 100%;">📋 COPIAR PROMPT</button>
     </div>
   </div>
@@ -880,7 +924,6 @@ function startTimer() {
             seconds--;
             updateTimerDisplay();
         } else {
-            // Pomodoro completo!
             clearInterval(timerInterval);
             running = false;
             
@@ -889,15 +932,12 @@ function startTimer() {
             sessionCount++;
             completedToday++;
             
-            // Salvar no localStorage
             localStorage.setItem('pomodoroTotal', completedToday);
             
-            // Atualizar display
             document.getElementById('pomodoroCount').textContent = `${pomodoroCount} 🍅`;
             document.getElementById('completedCount').textContent = completedToday;
             document.getElementById('sessionCount').textContent = sessionCount;
             
-            // Reset para próximo pomodoro
             seconds = 25 * 60;
             updateTimerDisplay();
             
@@ -946,7 +986,7 @@ async function copiarPrompt(event, arquivo) {
         setTimeout(() => { status.style.display = 'none'; }, 3000);
         
     } catch (erro) {
-        alert(`Erro: arquivo não encontrado na pasta 'prompts'`);
+        alert(`Erro: arquivo não encontrado`);
         botao.innerHTML = "❌ ERRO";
         botao.style.backgroundColor = "#dc3545";
         setTimeout(() => {
@@ -964,7 +1004,7 @@ function showTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 }
 
-// ===== FUNÇÃO DE TEMA (AGORA FUNCIONA!) =====
+// ===== FUNÇÃO DE TEMA =====
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const themeText = document.getElementById('themeText');
